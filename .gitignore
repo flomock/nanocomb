@@ -17,6 +17,8 @@ wip/
 # Icon must end with two \r
 Icon
 
+#intelliJ pycharm
+.idea/
 
 # Thumbnails
 ._*
