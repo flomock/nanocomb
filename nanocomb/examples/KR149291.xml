@@ -1,0 +1,2836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT request="download accessions">
+<entry accession="KR149291" version="1" entryVersion="3" dataClass="STD" taxonomicDivision="PHG" moleculeType="genomic DNA" sequenceLength="41698" topology="linear" firstPublic="2015-05-21" firstPublicRelease="124" lastUpdated="2016-06-23" lastUpdatedRelease="129">
+	<description>Klebsiella phage K5, complete genome.</description>
+	<comment>
+##Assembly-Data-START##
+Assembly Method       :: Lasergene v. 7.0
+Sequencing Technology :: IonTorrent
+##Assembly-Data-END##
+	</comment>
+	<reference type="submission" number="1" location="1-41698">
+		<author>Shneider M.</author>
+		<author>Miroshnikov K.</author>
+		<author>Schetinin A.</author>
+		<author>Alhovsky S.</author>
+		<submissionDate>2015-04-18</submissionDate>
+		<referenceLocation>
+Submitted (18-APR-2015) to the INSDC.
+Laboratory of Molecular Bioengineering, IBCH, Miklukho-Maklaya str. 16/10,
+Moscow, Moscow 117997, Russian Federation
+		</referenceLocation>
+	</reference>
+	<xref db="MD5" id="c3476671046aa93f905787f0e91e5d6f"/>
+	<feature name="source" location="1..41698">
+		<taxon scientificName="Klebsiella phage K5" taxId="1647374">
+			<lineage>
+				<taxon scientificName="Viruses"/>
+				<taxon scientificName="dsDNA viruses, no RNA stage"/>
+				<taxon scientificName="Caudovirales"/>
+				<taxon scientificName="Podoviridae"/>
+				<taxon scientificName="Autographivirinae"/>
+			</lineage>
+		</taxon>
+		<qualifier name="organism">
+			<value>
+Klebsiella phage K5
+			</value>
+		</qualifier>
+		<qualifier name="host">
+			<value>
+Klebsiella pneumoniae KSM 5-1
+			</value>
+		</qualifier>
+		<qualifier name="country">
+			<value>
+Russia
+			</value>
+		</qualifier>
+		<qualifier name="isolation_source">
+			<value>
+wastewater
+			</value>
+		</qualifier>
+		<qualifier name="collected_by">
+			<value>
+Mikhail Shneider
+			</value>
+		</qualifier>
+		<qualifier name="collection_date">
+			<value>
+10-Feb-2013
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="repeat_region" location="1..392">
+		<qualifier name="rpt_type">
+			<value>
+TERMINAL
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="765..1232">
+		<qualifier name="gene">
+			<value>
+ORF1
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="765..1232">
+		<xref db="GOA" id="A0A0F7LBX6"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LBX6"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF1
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+S-adenosyl-L-methionine hydrolase
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49543.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MIYTKEPANKVFVFVTAYRGYESLEVNEKMLKGLIKTIRTYPGAYGNIRDEHVQGCFKEAGMPEATQERTLKVECTEKQA
+AELTWLACKTYSQDAVLVVNSQTHTAALWSIEDVGEYPQVYPTLKEVSLGGTLQQVDAPKGECYSIIDGQYWEVV
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="1229..1411">
+		<qualifier name="gene">
+			<value>
+ORF2
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="1229..1411">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDZ7"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF2
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49544.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MKHYGITQQNLKSTRKAMKVALMCVNQSPEDMNAWHGYYMAQLAQTYRTRKVMYDNPVRN
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="1389..1586">
+		<qualifier name="gene">
+			<value>
+ORF3
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="1389..1586">
+		<xref db="GOA" id="A0A0F7LDR1"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDR1"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF3
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49545.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MITLFVISVYALIVLYFVWDFRKGLKVHKASFSYLKWGVLPRFTVRLPNGRFKANKVGIFYVATH
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="1570..1803">
+		<qualifier name="gene">
+			<value>
+ORF4
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="1570..1803">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LCS0"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF4
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49546.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MSQRTNLKKAFKIARMVMTYGASERATKKAYIRHHIRLPARQQRWVIRSVHIQLHEPFMVPKDLVPSATGFAKRQEF
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="1847..2851">
+		<qualifier name="gene">
+			<value>
+ORF5
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="1847..2851">
+		<xref db="GOA" id="A0A0F7LA44"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LA44"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF5
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+putative seryl-threonyl protein kinase
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49547.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MNYTDIQARLDVIRNLPICELDERQPLLVALMADIVNYETSDGDDTDSDWGLERQDYWKTLKIKAKDAGFNLLGNGHFSA
+AFKHKLLPGRVIKVGFKKEDSGAAYVAFCRMHQGRVGIPNVYHVARHAGCYTVVLDELEPCQRRENDGHDHYADLAYYFV
+EGECDPEEYTEDDQPFIETCQMIRKFFYGIASFDMHSGNIMFTKDGKPVITDPVSFSADRDREPFSLEPEELLVEIEQIA
+HDKMIERCKRNKAKRDRDSTLCRARRANNKARRQRAKVRARHIKERERLNAEAMKADFAGLERRVNLWHVADGLNVAFGQ
+PLVIDNYLQGRLMG
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="2921..5641">
+		<qualifier name="gene">
+			<value>
+ORF6
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="2921..5641">
+		<xref db="GOA" id="A0A0F7LBY1"/>
+		<xref db="InterPro" id="IPR002092"/>
+		<xref db="InterPro" id="IPR024075"/>
+		<xref db="InterPro" id="IPR029262"/>
+		<xref db="InterPro" id="IPR037159"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LBY1"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF6
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+DNA-directed RNA polymerase
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49548.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MNALNIARNDFSEIELAAIPYNILSEHYGDKLAREQLALEHEAYELGEQRFLKMLERQVKAGEFADNVAAKPLVLTLHPQ
+LTKRIDDWKEEQANARGKKPRAYYPIKHGVASELAISMGAEVLNEKRGVSSEAIALLTIKVVLGTLTDASKATIQQVSSQ
+LGKALEDEARFGRIREQEATYFKKNVADQLDKRVGHVYKKAFMQVVEADMISKGMLGGDNWASWKTDEQMHVGTKLLELL
+IEGTGLVEMTKNKMADGSDDVTSMQMVQLAPAFVELLSKRAGALAGISPMHQPCVVPPKPWVGTVGGGYWSVGRRPLVLV
+RTHSKKALRRYEDVHMPEVYKAVNLAQNTPWKVNKKVLAVVNEIINWKHCPVGDVPAIEREELPPRPDDIDTNEVARKAW
+RKEAAAVYRKDKARQSRRLSMEFMVAQANKFANHKAIWFPYNMDWRGRVYAVSMFNPQGNDMTKGMLTLAKGKPIGLDGF
+YWLKIHGANCAGVDKVPFPERIKFIEENEASILASAADPLNNTWWTQQDSPFCFLAFCFEYAGVKHHGLNYNCSLPLAFD
+GSCSGIQHFSAMLRDSIGGRAVNLLPSDTVQDIYKIVADKVNEVLHQHVVNGSQTVVEQIADKETGEFREKVTLGESVLA
+AQWLQYGVTRKVTKRSVMTLAYGSKEFGFRQQVLEDTIQPAIDNGEGLMFTHPNQAAGYMAKLIWDAVTVTVVAAVEAMN
+WLKSAAKLLAAEVKDKKTKEVLRKRCAIHWVTPDGFPVWQEYRKQNQARLKLVFLGQANVKMTYNTGKDSEIDAHKQESG
+IAPNFVHSQDGSHLRMTVVHANEVYGIDSFALIHDSFGTIPADAGNLFKAVRETMVKTYEDNDVIADFYDQFADQLHESQ
+LDKMPAVPAKGDLNLRDILESDFAFA
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="5740..6300">
+		<qualifier name="gene">
+			<value>
+ORF7
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="5740..6300">
+		<xref db="GOA" id="A0A0F7LE00"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LE00"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF7
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49549.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MTYSIVVTILLIIFTALFIITMRNAIRDGERLERKVQEVSSHLNNESAKVIRLADRAESLGRQVRYLEGDLESERQKVRD
+VEELRAHQRDRMKFLRKSLKEAQDELMMVSDLIHVKFTAVLPSGTHAKTLFKLGLGPCGLHVKSLRWTELEDRYLIDQLC
+TNGERKQFVYYKSEVVGRIEFRHGKI
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="6357..6566">
+		<qualifier name="gene">
+			<value>
+ORF8
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="6357..6566">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDR3"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF8
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49550.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MSLTITIRSNTMYQNTINFERKRERQQTEGYIPKGRKLNKTKRGGGVKGSFRNAKGDSVVNQEKYFVGA
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="6570..6827">
+		<qualifier name="gene">
+			<value>
+ORF9
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="6570..6827">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LCS2"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF9
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49551.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MAKQTKWLFDGSTSQWSRLGAAERRLMDTTGLHVVMLDDPCTNTVLFNVFEPRGSLLISKRFSRWSIDSASYWLAKLTAD
+YSSWQ
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="6925..7980">
+		<qualifier name="gene">
+			<value>
+ORF10
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="6925..7980">
+		<xref db="GOA" id="A0A0F7LA49"/>
+		<xref db="InterPro" id="IPR012310"/>
+		<xref db="InterPro" id="IPR012340"/>
+		<xref db="InterPro" id="IPR016059"/>
+		<xref db="InterPro" id="IPR016306"/>
+		<xref db="InterPro" id="IPR029710"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LA49"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF10
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+putative ATP-dependent DNA ligase
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49552.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MTMNIKTNPFKAVSFVRSAIEKALETSGYLIADTKHDGVRGNICVDNTANAAWLSRVSKTIPALEHLNGFDQRWTKLLKD
+DRWIFPDGFMLDGELMVKGVDFNTGSGLLRTKWVKATNVDYHTDRMAPAKVPFELDTKHLKVVLYDIIPLDIIESGDDYN
+VMTLLRLEHVKVALPVLQDHFPEVEWCLSESHEVYDMDELDALYRQKREEGHEGLVVKDPRGIYKRGKKSGWWKLKPENE
+ADGVIVGLNWGTPGLANEGKVIGFEVLLESGRVVSANNISQALMEEFTKTVLLSASNAEWHNANEDAQLLPNPYEGWACQ
+IKYMEETPDGSLRHPSFDKWRGTEADPTVKM
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="8096..8359">
+		<qualifier name="gene">
+			<value>
+ORF11
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="8096..8359">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LBY6"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF11
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49553.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MRLHFNKSNGIFSVRREDRSTVAASERHGKIPRIGDTFELAPSVHILVTRGLYELAQTKSRPFVPVVVTKWPRLRLFWER
+IKEVVND
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="8352..8780">
+		<qualifier name="gene">
+			<value>
+ORF12
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="8352..8780">
+		<xref db="InterPro" id="IPR021739"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LE04"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF12
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49554.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MTEREIQVVNLLVEQNTDRPDSTTCADGVICYKVLCSECPLATKGTTIGEVRAMKDSKAPSVEDDGVKRPSHYQLFEGVE
+AIEVIARSMTQEMFKGYCLGNILKYRLRAGKKSELATLEKDMAKAAFYLELYTKHKGLCYDA
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="8861..9025">
+		<qualifier name="gene">
+			<value>
+ORF13
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="8861..9025">
+		<xref db="InterPro" id="IPR016412"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDR5"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF13
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49555.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MQKFVVTVETANASYELPVHAGSLEEALEVAEAEYEELGQVTRVRPDTNFGFDL
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="9092..9787">
+		<qualifier name="gene">
+			<value>
+ORF14
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="9092..9787">
+		<xref db="GOA" id="A0A0F7LCS5"/>
+		<xref db="InterPro" id="IPR012340"/>
+		<xref db="InterPro" id="IPR016411"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LCS5"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF14
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+single-stranded DNA-binding protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49556.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MAFAKKKIYTTKIGTCEPYAYFNKPDYGGEGFENPRGTYKGSVTFKNEDCQELVDLIVKTHEENYAARLEAHEANPPKVQ
+KGKKPLKPYEGDMPFFDNGDGTTTFNFKCYGSYEDKKTGETKKIVLGVVDAKGKRIQDVPIIGGGSKVKIRFSLVPYGWS
+AVAGASVKLQLEGVMLVELATFGGGEDDWADEAVEGGYEADEPRSRKPQEDPEDWSGEEADEGEAEEDDDF
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="9787..10236">
+		<qualifier name="gene">
+			<value>
+ORF15
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="9787..10236">
+		<xref db="GOA" id="A0A0F7LA53"/>
+		<xref db="InterPro" id="IPR008029"/>
+		<xref db="InterPro" id="IPR011335"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LA53"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF15
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+endonuclease I
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49557.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MAGYGAKGIRKVGAFRSGLEDKVSKQLESKGVTFDYELWRIPYVIPASDHLYTPDFLLPNGIFVETKGLWEAEDRKKHLL
+IREQYPELDIRLVFSSSRTKIYKGSPTSYAEWCEKHNILFADKLIPVDWLKEPKRDVPFGKFKQKKGAK
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="10239..10694">
+		<qualifier name="gene">
+			<value>
+ORF16
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="10239..10694">
+		<xref db="GOA" id="A0A0F7LBY8"/>
+		<xref db="InterPro" id="IPR002502"/>
+		<xref db="InterPro" id="IPR006619"/>
+		<xref db="InterPro" id="IPR015510"/>
+		<xref db="InterPro" id="IPR034689"/>
+		<xref db="InterPro" id="IPR036505"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LBY8"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF16
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+N-acetylmuramoyl-L-alanine amidase
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49558.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MAKVQFTKRQETSQIFVHCSATKATMDVGVREIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGV
+CLVGGIDAKGNPEANFTPAQMQSLRSLLVELKVQYAGAVLMAHHDVAPKACPSFDLKRWWEKNELVTSDRG
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="10937..12664">
+		<qualifier name="gene">
+			<value>
+ORF17
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="10937..12664">
+		<xref db="GOA" id="A0A0F7LE06"/>
+		<xref db="InterPro" id="IPR006171"/>
+		<xref db="InterPro" id="IPR007694"/>
+		<xref db="InterPro" id="IPR013237"/>
+		<xref db="InterPro" id="IPR027417"/>
+		<xref db="InterPro" id="IPR034154"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LE06"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF17
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+DNA primase/helicase
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49559.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MSYGDSQEDGQESIFLFHAPCENCGSSDGNSVYSDGHEYCFVCQHRVPGSEERTEKLSARRPKGGNYGMNTQGSGLLVFG
+ESDGRYTDLTARGISKATCQKAGYWVAKVRGTAYQVADYRDQNGSIVSQKLRDKEKNFSTRGSHKGDALFGKHLWNGGKK
+IVITEGEIDMLTVMQLQDCKWPVVSLGHGASAAKKTCSANYEYFDSFDQIILMFDMDEPGRAAVEEAAQVLPPGKVHVAV
+LTEKDANECLLKGKGKEVLDQIWNAAPWVPDGVIGAMSMKDRVREAMTSEQSVGYLFSGCPGLNDRTLGARGGEVIMVTS
+GSGMGKSTFVRQQALGFARGQGLKVGMAMLEESVEETMEDVLGIANGIRLRQQPREFKQKLIEDGTYDKWFDELYGTDQF
+HLYDSFAEAEVDRLLAKLHYMRTGLNCDVIILDHISIVVSASEESDERKMIDRLMTKLKGFAKSTGVVLIVICHLKNPEK
+GKAHEEGRAVSITDLRGSGSLRQLSDTIIALERNQQGDMPNLVLLRILKCRFNGIGVGIAGYMEYNEKTGLLEPSSYTGG
+EGEGDTGWEGHEEDY
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="12789..12998">
+		<qualifier name="gene">
+			<value>
+ORF18
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="12789..12998">
+		<xref db="InterPro" id="IPR035156"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDR7"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF18
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49560.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MFKLIEALGRLVIALYIREAKALDKASKVEAEAAAKLAKAADKARQASLDATAEAAKVALKAQKLKEFF
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="12998..13309">
+		<qualifier name="gene">
+			<value>
+ORF19
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="12998..13309">
+		<xref db="InterPro" id="IPR035151"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LE20"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF19
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+tail tubular A-like protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49574.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MTTKVKFPGNTIQLSDTVDQWGRKVHINVRNDKVTLVYRWKAKSDNRAHTQRVTLDDTQAARLLASVAVAATVAVGEDKV
+REVILSKEVGSTAIRLAEASEAK
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="13382..13768">
+		<qualifier name="gene">
+			<value>
+ORF20
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="13382..13768">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LCU4"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF20
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49561.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MRKPEEIRADIEKLTKELEAVKVHESRQVAAVNILYNLGWTHDPHKGWQKPAPKLSDYKAPLKAGELATWEDGSLGGTVY
+IRSVGNKFSQVSHVRGVSRLGANVLNGSFTVENSKLTVRPREYFIGRR
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="13785..15944">
+		<qualifier name="gene">
+			<value>
+ORF21
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="13785..15944">
+		<xref db="GOA" id="A0A0F7LA57"/>
+		<xref db="InterPro" id="IPR001098"/>
+		<xref db="InterPro" id="IPR002298"/>
+		<xref db="InterPro" id="IPR012337"/>
+		<xref db="InterPro" id="IPR034699"/>
+		<xref db="InterPro" id="IPR036397"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LA57"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF21
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+DNA-directed DNA polymerase
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49562.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MLVSDIEANNLLEKVTQFHCGVIYDYSTDEYVSYRPWDFSAYLDALEAEVARGGLIVFHNGHKYDAPVLTKLAKLQLNRE
+FHLPRENVVDTLVLSRLLFANIKDSDMALLRSGKLPGKRFGSHALEAWGYRLGEMKGEYKDDFKKLLEEQGEDYVDGSEW
+ISFNEPMMDYNVQDVVVTKALLEKLLSDKHYFPDGDIHWWAHDAVAFWSNSCEAVWLEHRAAWLLAKQERNGFPFDTKAI
+EELYVELAGRRSELLQTLTDTFGTWYQPKGGTELFLHPRTGKPLGKYPRVKYPKQGGIYKKPKNKAQREGREPCELDTRD
+YVEGAPYTPVEHVVFNPSSRDHIALKLKEAGWIPTEFTDKGAPKVDDEVLEHVRVDNPEKQRCIDLIKEYLMIQKRIGQA
+AEGDKAWLRYVQEDGKIHGSVNPNGAVTGRATHSFPNLAQVPGSRAPYGHQCRAAFGAEHHLDGLTGDPWIQVGIDASGL
+ELRCLAHFMSKYDNGAYADVILNGDIHWVNAIAADLAPNVPRDKESQEHESMRDNAKTFIYGFLYGAGDEKTGQIVGAGK
+ERGKELKKKFLENTPAIAALREGIQQTLVESSRWVAGEQKVKWKRRWIKGLDGRKVHVRSPHAALNTLLQSAGALICKLW
+IVETEELLLKAGLKHGWDGDFAYMAWVHDEIQVACRTPEIAQQVIDTAQQAMRNVGEHFKFRCRLDTEGKMGPNWAVCH
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="15966..16250">
+		<qualifier name="gene">
+			<value>
+ORF22
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="15966..16250">
+		<xref db="InterPro" id="IPR022611"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LE11"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF22
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49564.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MGINKQFRVTFDVTATMSNEQEQEFLKELKELAKGPRNPRQDNILVQALTFGPEGAIVAILKDGLRKSIKDLGREVNSSE
+LTIRFAPAEVRVKS
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="16247..16456">
+		<qualifier name="gene">
+			<value>
+ORF23
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="16247..16456">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LBZ3"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF23
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49563.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MSEYLKVLAALKGCPKTFQSNYVRNNAALVAEAASRGHISCLTMSGRNGGAWEITSAGVKFLKTHGGCL
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="16453..16653">
+		<qualifier name="gene">
+			<value>
+ORF24
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="16453..16653">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDR9"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF24
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49565.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MKDFLGQDVSVGDRVVITSYGGYGLSKGTIEKINPKTVVVRTSPGKYGTTRKGPEYFVKIQEVTSE
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="16646..17551">
+		<qualifier name="gene">
+			<value>
+ORF25
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="16646..17551">
+		<xref db="GOA" id="A0A0F7LCW0"/>
+		<xref db="InterPro" id="IPR029060"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LCW0"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF25
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+putative exonuclease
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49566.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MSKHTLLSFSDYRATQKIAKGVLVMDGDWLVFQAMSAAEFDASWEEEIWHRCCDHAKAREILENSIESYKGRKKAWKNAD
+VVLAFTDRVNWRKLLVDPTYKENRAVVKKPVGYFEFLEYVFETYTCVLEPQLEGDDVMGIIGSNPLPYHYEKAVLVSCDK
+DFKTIPDCDFLWCTTGNILVQTQETADYWHLFQTIKGDITDGYGGIPGWGDTAEDFLKEPFIVEPVTSVLKSGKNKGQEV
+TKWVKRAPEPGETLWDCIKSIGAKAGMTEAEVIKQGQMARILRSDEYNIETGEITLWQPGS
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="17533..17643">
+		<qualifier name="gene">
+			<value>
+ORF26
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="17533..17643">
+		<xref db="GOA" id="A0A0F7LA58"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LA58"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF26
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49567.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MATGQLILIVLTMGLVARGIWMLALIIKQIVEHKAE
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="17729..17974">
+		<qualifier name="gene">
+			<value>
+ORF27
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="17729..17974">
+		<xref db="InterPro" id="IPR020121"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LBZ6"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF27
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49568.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MLKPIEHILNNPNDLPDVPRAVKEYLQSRFNADFLYQSEVRKLREAGHSEEFISGVLYGHYMASRVLDEMEGRQRALKEG
+D
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="17977..18198">
+		<qualifier name="gene">
+			<value>
+ORF28
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="17977..18198">
+		<xref db="InterPro" id="IPR020134"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LE15"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF28
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49569.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MCFSPKMKAPKVDTTTVPEPAPLTEEPKGIQYGGDEDSNSTTPEVSGRKSLKVTKTTEPTGSVSKIRKSALGG
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="18200..18460">
+		<qualifier name="gene">
+			<value>
+ORF29
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="18200..18460">
+		<xref db="InterPro" id="IPR024281"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDU3"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF29
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+hypothetical protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49570.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MGLFKKIKKAIKKVVKAPLKAVGLAADAPNVQAAAETPVAAPQEAPKEVVEDVESSADTESGKKKTRASGKKSLSVSRSS
+GGGINL
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="18472..20079">
+		<qualifier name="gene">
+			<value>
+ORF30
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="18472..20079">
+		<xref db="InterPro" id="IPR020991"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LCW4"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF30
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+head/tail connector protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49571.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MAEVKLEGFAEEGAKAVYDRLKNDRQPYETRAESCAQYTIPSLFPKDSDNASTDYTTPWQSVGARGLNNLASKLMLALFP
+MQSWMKLTISEYEAKNLLGDAEGLAKVDEGLSMVERIIMNYIESNSYRVTLFECLKQLCVAGNALLYLPEPEGYTPMKLY
+RLNSYVVQRDAFGNVLQIVTLDKIAFNALPEDVRSQVEAAQGDQKEDAEIDVYTHVYLNEAGDGYSKYEEVAEAVVPGSE
+AEYPLEECPYIPVRMVRIDGESYGRSYVEEYLGDLKSLENLQESIVKMAMITAKVIGLVDPAGITQVRRLTAAQSGAFVP
+GRKQDIEFLQLEKSGDFTVAKNVSDTIEARLSYAFMLNSAVQRTGERVTAEEIRYVASELEDTLGGVYSILSQELQLPLV
+RVLLKQLQATQQIPELPKEAVEPTISTGLEAIGRGQDLDKLERCIAAWSALKALEGDDDLNLANLKLRIANAIGLDTAGM
+LLTQEQKNALMAQQGAQIATQQGAAALGQGIATQATASPEAMAAAADSVGMQPGM
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="20183..21139">
+		<qualifier name="gene">
+			<value>
+ORF31
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="20183..21139">
+		<xref db="GOA" id="A0A0F7LA59"/>
+		<xref db="InterPro" id="IPR008768"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LA59"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF31
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+capsid scaffolidng protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49572.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MAGESNADVYASFGVNSAVLTGSTPEEHQENMLALDVAARDGDDAIELNTNSDDPYGSDVDPFGEPEEGRMQVRISADGS
+DEQDGEEGQGDEEQQGDEGSQPEEVTDEGEPEEFKPIGETPADINEASQQLEEHEAGFNDMVATAIERGLSQDAVTRIQQ
+EYQNEDSLSDESYKELAEAGYSKAFVDAYIRGQEALVNQYVEKVMDFVGGRERFQQVYSHMQTNNPEGAEALIKAFESRD
+VATMKTILNLAGQSRDKTFGKKAERSIAKRAIPAKPAPRKAVGFESQAEMIKAMSDPRYRTDSKYRREVEQKVIDSTF
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="21377..22411">
+		<qualifier name="gene">
+			<value>
+ORF32
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="21377..22411">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LBZ8"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF32
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+main capsid protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49573.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MANMQGGQQLGTNQGKGQSAADKLALFLKVFGGEVLTAFARTSVTTNRHMQRQISSGKSAQFPVIGRTKAAYLQPGESLD
+DKRKDIKHTEKTINIDGLLTADVLIYDIEDAMNHYDVRSEYTSQIGESLAMAADGAVLAELAGLVNLADSVNENIAGLGK
+PSLLEVGAKADLTDPVKLGQAVIAQLTIARAALTKNYVPANDRTFYTTPDVYSAILAALMPNAANYAALIDPERGSIRNV
+MGFEVVEVPHLTAGGAGDDRPDEGADATNQKHAFPATGGKVNKENVVGLFQHRSAVGTVKLKDLALERARRTEYQADQIV
+AKYAMGHGGLRPESAGALVFKASA
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="22592..23170">
+		<qualifier name="gene">
+			<value>
+ORF33
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="22592..23170">
+		<xref db="InterPro" id="IPR033767"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LA60"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF33
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+tail tubular protein A
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49577.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MNMQDAYFGSAAELDAVNEMLAAIGESPVTTLDEDGSADVANARRILNRINRQIQSKGWAFNINESATLTPDTNTGLIPF
+RPAYLSILGGQYVNRGGWVYDKSTDTDTFSGPITVTLITLQDYDEMPECFRQWIVTKASRQFNSRFFGAEDVENSLAQEE
+MEARMACNEYEMDFGQYNMLDGDAYVQGLIGR
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="23193..23618">
+		<qualifier name="gene">
+			<value>
+ORF34
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="23193..23618">
+		<xref db="GOA" id="A0A0F7LDU8"/>
+		<xref db="InterPro" id="IPR004211"/>
+		<xref db="InterPro" id="IPR013088"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDU8"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF34
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+endonuclease VII
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49575.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MRHYVIDGKKTCSRCLVNKPVGDFPVKMRNGRAGVYPYCKPCRTEYNKEKGKERTSEYNRAANLKSKFGLTLEDFNRMLE
+EQGGACAICHKKSSEVLRVDHCHTTGRVRKLLCGPCNTLLGMAFENSDTLRSAIKYLEEHK
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="23615..25990">
+		<qualifier name="gene">
+			<value>
+ORF35
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="23615..25990">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LCW8"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF35
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+tail tubular protein B
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49576.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MSLVSQSIKNLKGGISQQPEILRYPEQGTLQVNGWSSETEGLQKRPPMVFIKSLGPRGYLGEDPYIHLINRDEYEQYYAV
+FTGNDVRVFDLSGYEYQVRGDRSYISVVNPKDNLRMVTVADYTFIVNRTRQVRESQHLTNGGTFRDNVDALINVRGGQYG
+RKLEVNINGVWVSHQLPPGDNAKDDPPKVDAQAIAEAIAVLLRAAHPTWTFNVGTGFIHCIAPAGTTIDILETKDGYADQ
+LINPVTHYVQSFSKLPLNAPDGYMVKIVGDTSKTADQYYVKYDKSQKVWKETVGWNISIGLDYTTMPWTLVRAADGNFDL
+GYHDWKDRRAGDDDTNPQPSFVNSTITDVFFFRNRLGFISGENIVMSRTSKYFEFYPPSVANYTDDDPLDVAVSHNRVSV
+LKYAVSFAEELLLWSDEAQFVLSANGVLSAKTAQLDLTTQFDVSDRARPYGIGRNIYYASPRSSFTSIMRYYAVQDVSSV
+KNAEDMTAHVPNYIPNGVYSINGSGTENFACVLTKGAPSKVFIYKFLYMDENIRQQSWSHWDFGDDTEVMAANCINSTMY
+MLMRNAYNVWIAAVDFKKNSTDFPFEPYRFHVDAKRSYHISETAYDIETNQTVVNVKDIYSASFSKGTVAICESDGKITE
+YEPTGSSWDSTPDIRISGDISGKDIVIGFLYDFQYVFSRFLIKQEQNDGTTSTMDSGRLQLRRAWVNYQDTGAFTVSVDN
+GSREFNYLVNARVGSTGLRLGQKATTTGQYRFPVTGNALYQKVSLSSFNASPVSIIGCGWEGNYTNRASGI
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="26064..26471">
+		<qualifier name="gene">
+			<value>
+ORF36
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="26064..26471">
+		<xref db="InterPro" id="IPR020335"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LC02"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF36
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+internal virion protein A
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49578.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MYIRNTVSNDFDLFVPAYHDVLEAQAMGIEPSFPAVTECVTLDHDGFPLAIGGNCGDQCWFVTSDQVWRLDRAGKLEFRE
+RIMEYRDMLLNVYPSLWNFVWVGNGPHKRFLKSIGAVFHEEYTQGGKFQLFTIRR
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="26474..27064">
+		<qualifier name="gene">
+			<value>
+ORF37
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="26474..27064">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LE23"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF37
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+internal virion protein B
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49579.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MCWVAAIPIAMMAVQSVSSSRNAAQATGLQNDQMRRQSAQMIKESNIQNANASLEQKQKLEEASADLTAKNLDKVQAMGT
+IRAAIGEGNLEGASMDRISRIEEGKFIREANAVTDNYRRDYASLFAQQLGNSESTIDQVKSMQKAEGKGKSKLEQVLDPL
+ALMGSQAASAYASGAFDSKSTKAPISQAKGTKVGGK
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="27064..29319">
+		<qualifier name="gene">
+			<value>
+ORF38
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="27064..29319">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDV1"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF38
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+internal virion protein C
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49580.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MASKLEQALNQIPQAGSTRIRGGSASMQYRPVTIQQEGARQSNLVQSLAKFGAAMGEAADAYDKRQRDKAEERSDEIIRK
+LTPEQRREAIKNGTLLYQDDPYAMEALRFKTGRNAAFLIDDEVAQKVQNGEFRTRTEMEEYRHKRLTEGANEFAEQFMIN
+PEDSEFQRGFNANITERNISLYGKHDMFLSEQAQKGAILASKVELSGVLKDPAVLARPESGEFFQRYIDNALKTGSIPSD
+AQAQQVIIGSLNDVIQRPGATNFLQSLEGRPVTLNGKTTTYKELMGEEQWNALMVKAQSTQFDNDAKLSEGFRLGITSAL
+NQDDTSKGWEMLQGAKAELDRLQPGEQMTPERERLIQAEEQMQARFRQEAQAAAKEMDKRQKTINKNQVIDQQFTKRING
+QYVSTSYKDMPTNENTGEFTHSDMVNYANGKLAEIDQMQLTEQQKDRMKLSYLRADSEGGAFRTVVGQLVTDAGSEWSAA
+VINGKLPEDTTALNKLRTMRNTDPDLFAALYPDKADLFLTMDMMDKQGIDPQILIDADRSRRSLTKEMQYEDDKAWASLK
+NNSESPELSRIPASLDGMARKIYDSVKYRTGNSDMAMQQTDKFLKESTVTFKGDDVDGDTIGIIPKNILQVSDDPRSWEQ
+GRDILEEARKGIIAANPWVTNKQLTMYQQGDSIYMMDTTGTVRIRYDKELLTRTYQEQQQRLAKEAEEKALKEATKRAPI
+SAATQARKAAGERVRAKRKATPKFIYGGGDQ
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="29336..33301">
+		<qualifier name="gene">
+			<value>
+ORF39
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="29336..33301">
+		<xref db="GOA" id="A0A0F7LCX2"/>
+		<xref db="InterPro" id="IPR000189"/>
+		<xref db="InterPro" id="IPR008258"/>
+		<xref db="InterPro" id="IPR023346"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LCX2"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF39
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+internal virion protein D
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49581.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MSYDKSKPSDYDGIFQKAADSHGVSYDLLRKLSFNESSFNPKAVSKTGPKGIMQFTRNTARSMGLNVTDGDDDGRYNPEL
+AIDAGAKLLASLVKKYNGDELKAALAYNQGEGPAGAPQLQAYDKGDFGSISEEGRNYMRKLLDVAKSPQSGALEAFGGIT
+PKGKGIPAEDAFKGIAKTGKVGTELPESHGFNIEGVAQEAPNTPYAKDFWEKTGTTLDEYNSRSTFFGFGNAASAELQNS
+TLGVAFRAARADDGYDVFKDTMTPTRWNSYVPSKEDLQKLRDSGLPPIYYGVVTGGDGENWDALIKLAKDNFEADQRAAE
+AGTGAKLAAGIVGAGVDPLSYVPLVGVAGKGLKVVNKALRVGAQAGALSVASEGIRTSVAGGEAHYADAALGGLLFGAGM
+SALSDAVAAGIRKARGVESVNEFAGPALRMEARETAINTGGHDTSTLPPENFSFEQDHRGVPFADHPTEEGAVVLANGSI
+LSDTNPLNPRTQRDFAEIDPERAAPGIKLGGFTEIGLKTLGSKDAGVRAIAQDLVRSPTGMQSGSSGKFGATASDIHERL
+HATDQRMYNQLYDAVDRAMKDPEFSIGEQKMSRRAIRQEVYKRAALAIERPELQADLTKGEREVMDLLKEHFDTKRELME
+QPGIFGNANAVSIFPGSRHKGTYVPNVYDRGAKELMMQKLGGPEGLQQAIAQSWLTSYRVRPEVKARVDEYLMELNGYKS
+VDQVTPEVVQKHAMDKAYGISHTEDFTASSIIDDNITGLVGIENNSFLEARNMFDSDLPVTLPDGSTFSVNDLRDFDMAR
+IVPAYDRRVNGDISIMGGSGKTTQQLKDEIMALDKRAERKGQLKGEVEALKDTVKILTGRARRNNDTAFETAMRTLNDLA
+FFAKNFYMGPQNLTEIAGMLAKGNVKAMLHGIPTLRDLATRTSPVSGSELRELHGALFGKELDQLIRPGREDIVQRIREA
+SDTSGAMASVIGTIKFGTQELSARSPWTKMLNGTANYILDTARQGVLGDVAGAALGGKGSKFGKENFLKAASISPEQWKG
+IKQLFVDHATRDANGQFTIKDKKAFSQDPRAMDLWRLADKVADETMLRPHKVSQQDSKAYGAGVKMAMQFKNFTIKSLNA
+KFIRSFYEGYKNNRAIDMALTHVLSLGIAGTYFAMQAHVKAYGLQESQRKDYLKKALNPTMLGYAALTRSSHIGAPLSIV
+SMMAGAAGFQDANMLRSTILPKEEQFQKKDGASKGRAESSNLAGNLGSQVPALGYVGNVIATAKNAYGVATAPNKPTERD
+YMTGLMNSTKELVPNDPLTQQLIMKIYEANGVTIKQQPKPN
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="33363..35816">
+		<qualifier name="gene">
+			<value>
+ORF40
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="33363..35816">
+		<xref db="GOA" id="A0A0F7LA61"/>
+		<xref db="InterPro" id="IPR000743"/>
+		<xref db="InterPro" id="IPR005604"/>
+		<xref db="InterPro" id="IPR011050"/>
+		<xref db="InterPro" id="IPR012334"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LA61"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF40
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+tail spike protein
+			</value>
+		</qualifier>
+		<qualifier name="note">
+			<value>
+ORF40; putative capsular polysaccharide depolymerase
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49582.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MDQDIKTVIQYPVGATEFDIPFDYLSRKFVRVSLVSDDNRRLLSNITEYRYVSKTRVKLLVETTGFDRVEIRRFTSASER
+VVDFSDGSVLRAVDLNVSQLQSAHIAEEARDAALLAMPEDDAGNLDARNRKIVRLAPGEIGSDAVNKDQLDTTLGEAGGM
+LADMKELDKVIRDFVENFANDPASLRGVVWVYNGGAAIGGETTIIIDKPGDVLAVPCLYINGSRQDVGIAYDYDNKTKTI
+TFKGDSLQTGDLLVAMTAEGSVPLADVLMSLAGARYVMTSRGISVEAAIAGMRGDVVTLVDMHSEADGNDYAPAATKALA
+TGRALFVPAGEWTFNSTVSIPSGARIFGTGAGSILRSPEATDAAGTAIQTVLMGQNVSNVELKDFKVNGGSGAVHTVKRN
+RRGVRFIECQDVRVKGLEVSRTADWALSFERCKGVVVDNYRHRRSESALSGGRDGLHFLDCDGFSATNLDIESHDDCVGI
+TSEKSGTFDGIVNTLRGTSMIGSLVIYNEEQASGQYIPTPMRGLIVTNIRAKRGQTARQLVRIAAYATGSTASDVTVSNV
+QGDVTASHGVQIQSVSNVNLRDINVSVINSSSHGVYLQRCVGVVGNVRGKTVAATHDGIQMTGCTNVVLEAESAGSAGNG
+VQVNGCTNVVLSAVIDSAGTNGVRVVNSTNVDIPSGIFSGTFGIFGINQAGNTGFTPSDSIVWNTTSPRINTVAMSMVMR
+TPTVVIEAKEDSTGELIIYRAIGATITRVATGRYTISYASPMSSTQHYFSAEAFHPGNIRNVYTISAVSTNGITLGVRNA
+EGVDTYSEYIRFVAYNY
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="35826..37553">
+		<qualifier name="gene">
+			<value>
+ORF41
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="35826..37553">
+		<xref db="InterPro" id="IPR011050"/>
+		<xref db="InterPro" id="IPR012334"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LC06"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF41
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+tail spike protein
+			</value>
+		</qualifier>
+		<qualifier name="note">
+			<value>
+ORF41; capsular polysaccharide depolymerase
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49583.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MPRFNQPKGSTIGVLRDGRTIQEAFDSMPRLESFEGSTPTDKLRAAITLGVSEVAIGPVEGNDGSPYEFGEVVIPYPLRI
+VGCGSQGINVTKGTVLKRSAGASFMFHFSGEGQSQRPMGGGLFNINLNGDSATALGDIIKVTQWSCFKAQNCSFQNMAGW
+GIRLKDVMESTITGNLFRRLGGPSGGGILFDDIRSAVTDNVNNLHIEDNTFALISGPWIGSTANSNPDLIWICRNKFEYD
+GTPAVPNENPSYVLDFAQLSRAFISENGFTHFTTARNNYAGVLRIGSTALGTVLFEDNLLFACESAGVINGGIVESRGNI
+NNQGSASAAITQFTNNSSKVCKLQRVVNIQSNGNVSVGPQLFPAGYINMAELPGNTRLSSEYDADGETTSVLRVPANTQV
+RQWAVPKMYQDGLTVAKVTVRANGASSGAIISLQSGSTVLSTKPIDAGVWKNYVFYVKANQLPETLQLRNTGTVDALVDG
+MVFEKVNYIDWDFAVTPGTLAVGAKYTSPNQSYLDVAGMRVQAVSTPMFDGPTTGLQVWVEATSGNGSFTVVMKNDTAAE
+LVTTVTRCRVRAFVS
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="37563..37766">
+		<qualifier name="gene">
+			<value>
+ORF42
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="37563..37766">
+		<xref db="GOA" id="A0A0F7LE27"/>
+		<xref db="InterPro" id="IPR019682"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LE27"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF42
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+class II holin
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49584.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MLSLDFNNEVIKAAPIAGVAGADGVARLFWGLSLNEWFYVAAIAYTVVQIGAKVVDKIIDWKKANKE
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="37770..38027">
+		<qualifier name="gene">
+			<value>
+ORF43
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="37770..38027">
+		<xref db="InterPro" id="IPR024345"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LDV5"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF43
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+DNA maturase A
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49585.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MDLIKFLEMLDTEMAQQMLMDLKNPEKRTPQLYNAIGKLLERHKFQISKLTPDVNILGGLAEGLEAYNSKVGDDGLTDDD
+KFTLQ
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="38124..38570">
+		<qualifier name="gene">
+			<value>
+ORF44
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="38124..38570">
+		<xref db="GOA" id="A0A0F7LD03"/>
+		<xref db="InterPro" id="IPR004929"/>
+		<xref db="InterPro" id="IPR016417"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LD03"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF44
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+putative Rz-like lysis protein
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49586.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MLEITKRIVPYLVVIMVFAFGWHFGSQSTDTKWKEVVQNEYVQKQTARVETQKAIDAVSAKYQADLEGLEGSTDRIIADL
+RSDNKRLRVKVKPTSVAAGPDGRCLVDGSVELHEATARSLIAITQKADLKEKALQDTIRKLQGKGGEH
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="38567..40324">
+		<qualifier name="gene">
+			<value>
+ORF45
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="38567..40324">
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LA62"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF45
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+DNA maturase B
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49587.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MSNSQQAKNALIIAQLKGDFVAFLFVLWKALNLPEPTKCQIDMAKCLANPKNKKFILQAFRGIGKSFITCAFVVWTLWRD
+PQLKILIVSASKERADANSIFIKNIIDLLPFLSELKPRPGQRDSVISFDVGPAKPDHSPSVKSVGITGQLTGSRADIIIA
+DDVEIPGNSATQGAREKLWTLVQEFAALLKPLPTSRVIYLGTPQTEMTLYKELEDNRGYSTIIWPAQYPRSKEEDLYYGD
+RLAPMLRSEYDEDKEGLSSQPTDPVRFDSMDLQEREVEYGKAGYTLQFMLNPNLSDAEKYPLRLRDAIVCGLQADKAPMH
+YQWLPNRQNRNEELPNVGMKGDEIYSFHTASSNTGAYQGKILVIDPSGRGKDETGWCVLYTLNGYIYLMDAGGTRGYEEK
+SLEFLAKKAKQWQVQTVVFESNFGDGMFGNVFQPVLLKHHPAQLEEIRARGMKEVRICDTLEPVLASHRLVIRDEVIRQD
+YQTARDADGKHALKYSLFYQMTRMSREKGAVAHDDRLDALALGVEFLRSTMQQDAVKIEAEVLQEFLEHHMEKPLSNISQ
+FRATSSNGVDIRWEDDGDDSMFISW
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="gene" location="40334..40705">
+		<qualifier name="gene">
+			<value>
+ORF46
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="CDS" location="40334..40705">
+		<xref db="GOA" id="A0A0F7LC10"/>
+		<xref db="InterPro" id="IPR003615"/>
+		<xref db="UniProtKB/TrEMBL" id="A0A0F7LC10"/>
+		<qualifier name="codon_start">
+			<value>
+1
+			</value>
+		</qualifier>
+		<qualifier name="transl_table">
+			<value>
+11
+			</value>
+		</qualifier>
+		<qualifier name="gene">
+			<value>
+ORF46
+			</value>
+		</qualifier>
+		<qualifier name="product">
+			<value>
+HNH homing endonuclease
+			</value>
+		</qualifier>
+		<qualifier name="protein_id">
+			<value>
+AKH49588.1
+			</value>
+		</qualifier>
+		<qualifier name="translation">
+			<value>
+MFDVRYDPDVPGCLSNSKGEQLAVLQGEYFKWNGGSAHRIVWEGFNGRIPDGYMIDHINRNKQDNRIENLRMVTRSQNVH
+NSKRARADGMPKGITERQRDFRILVHKDCKRYVRYAPTSERSL
+			</value>
+		</qualifier>
+	</feature>
+	<feature name="repeat_region" location="41307..41698">
+		<qualifier name="rpt_type">
+			<value>
+TERMINAL
+			</value>
+		</qualifier>
+	</feature>
+	<sequence>
+tctcacagtttaaacttttggttatccccccccggtaccctcccagttcacccaaagtaa
+ccataggccaccctaaaccttcggtttaaccttaggtgggactgttgggaaaccttgggg
+tgatactatatgttgtggtgagtgggaccttgggatactatatgtggctatctctgtgtc
+cctatctgttggtactcattaagtcacaccttaggtatccaccttaggacctcctgaggt
+tatacctgagaccatataccttaggttaaccataggccatccggtgagccaccactataa
+ggctatacaatgtaggttgtcaatataccaaccaattaggacacactatagggagacact
+ttaagtattactaagagaccattaccataaagataactatcactataggtctaactaaaa
+gtttaactttaagtattgacattcagattacgttatgagacattagcaaccgttgagaga
+cacaacgtcaccaactaccagacaataccacgagttatctggttagactgagagtctcaa
+gtagtcatcaaccggacatacgaaagtggttgactcaacgataaacatcaagtaatatgc
+atcaccagtaacaacgctctttaacaatatggattagctgacatgtacatcactcatcac
+ttagtgtttaactagtggttacattcaggtctctggcaaggtacgtcccgtcaccctgag
+agtagccacattgataaccactaatcaactgaaggatatacaccatgatttacaccaaag
+agccagccaacaaagtgtttgtattcgttaccgcttaccgtggctatgagtcgcttgaag
+ttaacgagaagatgctcaagggtctcattaagaccattcgcacctatccgggagcatacg
+gcaacattcgtgatgagcacgtacaaggctgctttaaggaagctggtatgccggaggcaa
+cgcaagagcgcacgcttaaggtagaatgcacggagaagcaggcagcagagttaacttggc
+tggcctgtaagacctactcgcaagatgctgtgctggtggtgaactcacagactcacacgg
+ctgcgctatggtctatcgaggatgttggcgagtatccacaagtataccctacgctcaaag
+aggtgtctttaggtggcacgctgcaacaggttgatgcaccaaagggtgaatgctattcaa
+tcatcgacgggcaatactgggaggttgtatgaagcactacggaatcacgcagcagaacct
+caagagtactcgcaaggccatgaaggtggccctaatgtgtgtcaaccagtcgcctgaaga
+catgaacgcatggcacggctactatatggcccaattagcccagacctatcgcacacgcaa
+ggtaatgtatgataaccctgttcgtaattagtgtgtacgccctgattgtcctgtactttg
+tgtgggactttcgcaagggtcttaaggtacacaaagcatcattcagctacctgaagtggg
+gcgtgctgcctcgctttactgtaagactacctaatggccgctttaaggcaaacaaagtgg
+ggatattctatgtcgcaacgcactaacctgaagaaagcattcaagattgcacgtatggtt
+atgacctacggtgcatccgaacgcgccacaaagaaagcatacatcaggcaccacatacga
+ctaccagcaagacagcagcgatgggtaatacgtagcgtgcacatccaactacacgagcca
+ttcatggtccctaaggacctcgttccgtcagcaactggttttgcaaagcgccaagagttc
+taacactcgttaacaccacacactactatttaaaggaaacaaccaaatgaactacaccga
+tatacaagcacgcttagacgtcatccgcaacctgccaatctgtgaactcgacgagcgcca
+gccgctgctggtagcactcatggcggacattgtgaactatgagacgtccgacggtgacga
+tacggacagcgattggggtctggaacgtcaggactattggaaaaccctgaagattaaggc
+caaagacgctgggtttaacctgctgggcaatggtcacttcagcgcagcgtttaagcataa
+gctgctaccgggtagggtcattaaggttggctttaagaaagaggactcaggggccgctta
+cgtggcgttctgccggatgcaccaaggccgggtagggattcctaatgtctaccacgtagc
+gcgtcacgctggatgctatacggtggtactggatgagctggaaccgtgccagcggcgaga
+gaacgatgggcacgaccactacgcagacctcgcgtattactttgtcgagggtgaatgtga
+ccctgaggaatacacggaggatgaccaaccgtttatcgagacgtgccagatgattcgcaa
+gttcttctacgggattgcgtccttcgatatgcacagcggtaacatcatgttcaccaaaga
+cggcaagccagtgattactgacccggtgtcattctcagcggaccgggaccgtgagccttt
+ctcactggaacctgaggagctactcgtagagattgagcagatagcgcacgacaagatgat
+tgaacgctgtaagcgcaacaaggctaagcgagaccgtgacagcacgttgtgtcgcgcccg
+tagggccaacaacaaggcccgcagacaacgcgctaaggtccgagcgcgccacataaagga
+gcgcgaacggctcaacgctgaggccatgaaggcagactttgcggggcttgaacgccgtgt
+taacctatggcacgtagccgatggccttaacgttgcatttggtcaaccgctggtaataga
+taactacctacaaggtagacttatgggctaacaaggtgtatcttaggtgtctccgatacg
+aggcaccaatagataaactttattcacaaagaggcacacaatgaacgcattaaacattgc
+acgtaatgacttctcagagattgaacttgctgctatcccgtacaacatcctcagcgagca
+ctacggggacaagctggcacgtgagcagctggcccttgagcatgaagcgtacgagctggg
+cgagcagcgtttcctgaagatgttagaacgtcaggtgaaggctggtgagttcgccgacaa
+cgtggccgctaagccgctggtcttaacgttgcacccacagctgaccaagcgtatcgacga
+ctggaaggaggaacaagcaaacgctcgcggtaagaagcctcgcgcatactatccgattaa
+gcatggtgtggcctcagagttagccattagcatgggcgctgaggtgctcaacgagaagcg
+cggagtgtccagtgaggcaatcgcactgctgaccattaaggtcgtcttagggacgctcac
+agacgcctctaaggcaaccatccagcaggtgtcctcgcagttaggcaaggcccttgagga
+tgaggcccgcttcggtcgcatccgtgagcaggaggccacctacttcaagaagaacgtagc
+ggaccagctggacaagcgcgtaggccacgtgtacaagaaggccttcatgcaagttgtcga
+ggccgatatgatatccaaagggatgcttggcggcgacaactgggcgagctggaagaccga
+cgagcagatgcacgtagggaccaagctgttggagctactcattgagggtactggtctggt
+ggagatgaccaagaacaagatggccgatggctcggacgatgtgaccagtatgcaaatggt
+ccagctggctccggcctttgtggaactcctgagtaaacgagctggcgcacttgcgggtat
+cagccctatgcaccagccgtgcgtagtccctccgaaaccttgggttgggaccgtaggcgg
+tggctactggtcagtcggtcgtcgcccgctggtactggtgcgtacccactccaagaaagc
+actgcgccgctatgaagacgtgcacatgcctgaggtatacaaagcggtcaacctcgcgca
+aaacacaccgtggaaggtgaacaagaaggtgctggcggtagtcaacgagattatcaactg
+gaagcactgcccggtaggtgacgtcccagcgattgaacgcgaagagttaccaccacgccc
+ggacgatatcgacaccaacgaggtggcacgcaaggcatggcgcaaggaggccgcagcggt
+ctaccgtaaggacaaggcccgccagtctcgccgcttgtcgatggagttcatggttgcaca
+ggccaacaagttcgctaaccacaaggccatctggttcccgtacaacatggactggcgcgg
+tcgtgtgtacgctgtgagcatgttcaacccgcagggtaatgacatgaccaagggtatgct
+gacattggccaaaggtaagccaatcggtctagatgggttctactggctgaagattcacgg
+tgcaaactgcgcgggcgtcgataaggttcctttccctgagcgcatcaagttcatcgaaga
+gaacgaggccagcattctagcgagtgcagcggacccgctgaataacacttggtggaccca
+gcaggattcgccgttctgtttcttggcgttctgtttcgaatatgctggcgttaagcacca
+cggtctgaactacaactgctcgctgccgctggcgttcgacgggtcatgctctgggattca
+gcacttcagcgcaatgctccgcgattccatcggtggtcgtgctgttaacctactgccttc
+tgataccgtgcaggatatctacaagattgttgccgacaaggttaacgaggtgctccatca
+acacgttgtcaatgggtctcagacggtggtcgagcagattgccgacaaggagactggtga
+gttccgtgagaaggtaacgttgggtgagtctgtgttagctgctcaatggttacaatatgg
+tgtgacccgtaaggtgactaagcgttctgtcatgacgttggcgtacggttccaaagagtt
+cggattccgtcagcaagttcttgaggacaccatccagcccgctattgacaacggcgaggg
+cctaatgtttacgcaccctaaccaagcggctggctacatggctaagctgatttgggacgc
+tgtgactgtgactgtagtggcagctgtcgaggcaatgaactggctgaagtctgccgctaa
+actactggccgctgaagttaaagacaagaagaccaaggaggtgcttcgcaagcgctgtgc
+aatccactgggtaacaccggacggcttccctgtgtggcaggagtaccgcaagcagaacca
+agcacgcctgaagctggtattcctcggtcaagccaacgtcaagatgacgtacaacaccgg
+gaaggactcagagattgacgctcacaagcaggaatctggcatcgctccgaactttgtcca
+ctcacaggacggtagtcacctacgcatgaccgtagtgcacgccaacgaggtctacgggat
+tgactccttcgcactcattcacgactccttcgggaccattccggcagacgctgggaatct
+ctttaaggcagtccgcgagactatggtcaagacctacgaggacaacgatgtaatcgctga
+cttctacgaccagttcgctgaccagctgcacgagtctcagctcgacaaaatgcctgcggt
+cccggctaaaggtgacctgaatctgcgcgatatcttagagtctgacttcgcgttcgcata
+aggtctcaggcaattaggacacactatagggaaccttcgaatgactgagggttccattac
+ttaaagttttaacttaaagaatgcttaaagaggcacgctatgacttactcaatcgttgta
+accatcttgttaatcatcttcacagcactcttcattatcaccatgcgtaatgcaatacga
+gatggggaacgcttggagcgtaaggtgcaggaggtaagctcccatcttaacaatgagtca
+gccaaggtgatacgactggcagacagggccgagtctcttggtagacaggttcgttactta
+gagggtgatcttgagagcgagagacagaaggtgcgcgatgtggaggaactccgagcgcac
+cagcgggaccgaatgaagttcctccgcaagtcgctgaaggaagcacaagacgagctgatg
+atggtctccgacctgattcacgttaagttcaccgctgtgttaccgtccggtacgcacgcc
+aagacgctctttaagttaggacttggcccgtgtggtcttcacgttaaatcccttcgatgg
+acagagcttgaagaccgctatctgatagaccagctgtgcaccaacggtgagcgcaagcag
+ttcgtctactacaagagcgaagtagtaggacgcatcgagttccgacacggtaagatttaa
+ttagggcacactatcaggaacatactcaaggtcatcacggtcggtggccttcatgaatgt
+cccttactatcacaatcaggagcaacaccatgtatcagaacacaatcaactttgagcgca
+aacgtgaacgccagcagactgagggttatattcctaagggccgcaagctaaacaagacga
+agcgcggtggcggcgtgaagggttccttccgtaacgctaagggtgacagtgttgttaacc
+aagagaaatactttgtaggagcataacaaatggctaagcaaactaaatggctgttcgatg
+gaagcacttcgcagtggtctcgtttaggagcagcggagcgcagactgatggatacgacag
+ggctacacgtggtcatgcttgatgacccatgcactaacaccgtgctgttcaacgtgttcg
+agccacgcgggtcacttctaataagtaagcggttcagccgctggtcgattgactcagcgt
+catactggctggcaaaactcacagccgactactcaagctggcagtaattaggtcacacta
+taggcagactcaaggtcatcgacattcggtggcctttatgattgcttattgcacattaat
+taaacactatctggagacatcctcatgacgatgaacattaagactaatccatttaaggcc
+gtatcgttcgttcgctctgctatcgagaaggcgctggagacttccggttacctcatcgca
+gacactaagcacgatggcgtgcgcgggaatatttgcgtagacaacacggccaatgcagca
+tggctcagccgggtttccaagaccattccggcacttgagcacctcaacggtttcgaccag
+cgctggactaagttactgaaagatgaccgctggattttccctgatggctttatgcttgat
+ggcgaactcatggtcaaaggcgtggacttcaacaccgggtctggcctgctgcgaaccaag
+tgggtgaaagcaaccaacgttgactaccacaccgaccgcatggcaccagccaaggttccg
+tttgaactcgacactaagcacctcaaagttgtcctctacgacatcattccgcttgacatt
+atcgagtccggtgatgactacaacgtgatgaccctgctgcgccttgagcacgtcaaggta
+gccttaccagtcctgcaagaccacttccctgaagtcgagtggtgcctctctgagtcccat
+gaagtttacgacatggacgaactcgatgcgctgtaccgacagaaacgagaagaaggtcat
+gaaggtctggtggttaaggaccctcgcggtatctataagcgcggcaagaagtccggctgg
+tggaagctgaagccagagaacgaggctgatggtgtcattgttggactcaactggggaact
+cccggtctagccaacgagggcaaggtgattggcttcgaggttctccttgagtccggtcgt
+gtggtctccgccaacaacatctcgcaagcgctgatggaggagttcacaaagactgttctc
+ctgagcgcatcgaatgctgaatggcacaatgcaaacgaggacgcacagcttctgcctaac
+ccttacgagggctgggcgtgccaaatcaagtacatggaggaaactccagacggctccctg
+cgtcacccgtcgttcgacaaatggcgtggaaccgaggcagacccaaccgttaagatgtaa
+ttaggacccactataggagacactaaatgtctatcaacctgattctaatcatcgtgttca
+tcctcgcggctatcgtgtggtcaatgaacgacgagccacccaaaggagcataaccatgcg
+cttacacttcaataaatctaacggtatcttctcggttcgccgggaagaccgcagcactgt
+agcagcctctgagcgccacggtaagattcctcgtatcggtgataccttcgagctggcacc
+cagtgtgcacatcttggttactcgcggtctctacgaattggctcagactaagagccgtcc
+tttcgtacccgttgtggtaaccaagtggccacgcctgcgtctgttctgggagcgtatcaa
+ggaggtagtcaatgactgaacgtgaaattcaagtggtgaatctgctggttgaacaaaaca
+ctgaccgcccagactccacaacgtgcgctgatggcgtcatatgctacaaggtattgtgca
+gtgagtgtccgctagccaccaaaggtacgaccattggggaagtccgcgcaatgaaggaca
+gcaaggctccgagtgtagaagacgacggtgttaagcggccaagtcactaccaactgttcg
+aaggcgtcgaggccatcgaggtgatcgcgcgtagcatgactcaggagatgttcaaggggt
+actgcctcggtaacatcctcaagtaccgccttcgtgctggcaagaagtccgagctggcca
+ccttagagaaagacatggcgaaggccgctttctatctggagctgtacaccaagcacaagg
+gtctatgctatgacgcctagcgattgggcaagaaagatgtacgagaagacgctcgaccct
+gcgtacatcaccttgtataacatgtggaaggagcgagaagatgcaaaagttcgtcgtaac
+ggtcgagacagctaacgcatcgtatgaactcccggtacacgctgggtctcttgaggaggc
+cctcgaagttgccgaggcggagtacgaagagttaggccaagtgactcgggtacgcccaga
+tactaatttcgggttcgacctgtagttattagggcacactatagggacacatgctgtccc
+tctttctgttataaaccaaaggagattcatcatggcattcgctaagaagaaaatttacac
+cactaagattggtacctgtgagccgtacgcttacttcaacaagccggactatggcggtga
+gggttttgagaacccacgcggtacctacaagggttccgtaacgttcaagaacgaagactg
+tcaggagctggtagacctcatcgttaagacccatgaggaaaactacgctgctcgtctgga
+agcacacgaagctaacccgcctaaggttcagaagggtaagaagcccctgaagccgtacga
+aggcgacatgccgttcttcgacaacggtgatggtaccaccacgttcaacttcaagtgcta
+cggttcatacgaggacaagaagactggcgagaccaagaagattgttctgggtgtagtaga
+cgcgaagggcaagcgcattcaggacgttccgattatcggcggcggttccaaagtgaagat
+tcgcttctctctggtaccgtacggctggtctgcggtagctggtgcttccgttaagttgca
+gctggaaggcgttatgttggtcgaactggctacctttggtggtggcgaagatgactgggc
+tgacgaggctgtagaaggtggttacgaagcggacgaacctcgcagccgtaaacctcagga
+agacccagaagactggtctggtgaggaagctgacgagggtgaagccgaagaagacgacga
+cttctaatggcgggctatggggccaaagggattcggaaggtgggtgccttccggtctggc
+cttgaggacaaggtgtccaagcagttagaatcaaagggcgtcacgttcgactacgaattg
+tggcgcatcccttacgttattcctgcgagtgaccacctttacactccagacttcttgctg
+cctaacggtatcttcgtggagactaagggtctctgggaagccgaggaccgcaagaagcac
+ctactgattcgtgagcaatacccggagttagacattcggttagtgttctcttcgagtcgc
+actaagatttacaaagggtcgcccaccagttacgctgagtggtgcgagaagcataacatc
+ttgtttgccgacaaattgattcccgtagactggctgaaggagccgaagcgtgatgtaccg
+ttcggcaagttcaagcagaagaaaggagcaaagtaagtatggccaaggttcaattcacta
+agcgacaggagacctctcagattttcgttcactgttccgccaccaaggcaaccatggacg
+taggtgttcgtgagattcgccagtggcataaagagcagggctggcttgacgttgggtatc
+acttcatcatccgtcgtgatggtaccgttgaggcgggccgtgaccaagatgctgttggtt
+cacacgtcaagggatacaactcgacctctgtcggtgtatgtctggtaggcggtatcgacg
+ccaagggtaaccctgaggcaaacttcacgccagcccagatgcagtcgctgcgctcactgc
+tggtagaactgaaggtgcaatacgctggggccgttctgatggcacaccacgacgtagcgc
+ccaaagcctgcccgagcttcgacctgaagcgttggtgggagaagaacgaactggtcactt
+cagaccgtgggtaaacattaggtagcactacagggagacaattgcgtttccctgttgtcg
+cacattctgtacaaattatggtcaggcttcaggtgcacttggcgtagcgctgcgtttcat
+tcgggttcgattcccggactgaccacaccaacggagattactttatgaacaagttcaaag
+aacactttgctgactcgtggccactatacgtgtacgcatcggcattcgtaataggcgcac
+ttcgggtgttgctaccatgagttacggagacagtcaagaagatggtcaggagagtatctt
+cctgttccacgctccgtgcgaaaactgtggttcttctgatggtaactcagtgtactctga
+cgggcatgagtattgcttcgtgtgccaacaccgggttcccggctcagaggaacgtaccga
+aaagttatcagcgagaagacccaaaggagggaattacgggatgaatacacaaggttcagg
+cttattggtattcggcgagagtgacggtcggtacactgacctgaccgctcgtggtatctc
+aaaggcgacatgccagaaggctggctattgggtcgccaaggtcagagggaccgcttatca
+agtggctgactatcgtgaccagaatggctccatcgtctctcagaagctgcgggacaagga
+gaagaacttctctaccagagggtcccacaaaggggatgcactgttcggtaagcacctatg
+gaatggtggcaagaagattgtcatcaccgagggtgaaatcgacatgttaaccgtgatgca
+acttcaggattgtaagtggcctgtggtttctctcggtcacggtgcgtcagccgctaagaa
+aacttgtagtgcaaactacgagtattttgatagcttcgaccagattatcctgatgttcga
+catggacgaacccggtcgtgcagctgttgaggaagccgctcaggttctccctcccggtaa
+ggtccacgtggccgtgctgaccgagaaggacgccaacgagtgtttactcaaaggtaaggg
+caaggaagttctcgaccagatatggaacgcagcaccttgggttccagatggtgtcatcgg
+tgcgatgtccatgaaggaccgtgtacgtgaggctatgactagcgaacagagcgttggata
+cttgttctcaggatgtccgggactgaatgaccgaaccttgggtgcacgtggtggtgaagt
+catcatggtcacttctgggtcaggaatgggtaagtctacgttcgttcgtcagcaggcctt
+agggttcgccagagggcaggggctgaaggtaggcatggcgatgcttgaggagtccgtaga
+ggagaccatggaggatgtattagggattgctaacggcatccgcttacggcagcagcctcg
+ggagttcaagcagaaactcattgaggatggtacgtacgacaaatggttcgatgagctgta
+tggtaccgaccagttccatctctatgactcctttgcggaagctgaggtggaccgactgtt
+agcgaagctgcactacatgcgcacagggctaaactgtgacgtaatcattctggaccacat
+ctcaatcgtagtgtctgcctcggaggaatccgatgagcgcaagatgattgaccgactcat
+gaccaagctgaaagggttcgctaagtcaaccggagtggtacttattgttatttgccacct
+gaagaacccggagaaaggtaaagctcatgaagaaggacgtgctgtttccattactgacct
+gcgtgggtctgggtctctgcgtcaactctctgatactatcattgcccttgagcgtaatca
+gcaaggggacatgcctaatcttgtcctccttcgtattctcaagtgtcgctttaacggtat
+tggtgttggcattgcggggtacatggagtacaacgaaaagaccggactccttgaaccgtc
+tagctacactggcggagaaggagagggagatactggctgggaaggccacgaagaggacta
+ttgaggactatgggtcgttcactcagtctgactttgatatagagagcgcatacgcccacg
+gtgcctatcgttctaattaacccatactattgggaacacatcccgaaaccacttaaagga
+gattcatcatgtttaaacttatcgaagcattaggccgtctggtcatcgcactgtacatcc
+gtgaagccaaggcactggacaaagcgtccaaggtggaagcagaggctgccgctaagctgg
+ctaaagccgccgacaaggcacgtcaagcgtctctggacgcaaccgcagaggcagcgaaag
+ttgcacttaaagctcagaaacttaaggagttcttctaatgactaccaaagttaaattccc
+cggcaacaccatccagctgtccgacactgtagaccagtggggtcgtaaggttcacatcaa
+cgtccgcaacgacaaggtgactctggtctaccgttggaaggctaagagtgataaccgtgc
+gcacactcagcgtgttacccttgacgatacacaggcagctcgactgctggcatccgtagc
+cgtggccgctactgtagctgttggtgaggacaaggtccgtgaggttatcctgagtaaaga
+ggtaggctcaacggcaatccgactggccgaagcgtcagaagctaagtgataaactcaagg
+tcattactatatgtagtggcctttatgattatcacacacaacatattgagaggacataac
+catgcgtaaacctgaagaaatccgtgcagacatcgagaagctaaccaaagagctggaagc
+tgttaaggttcatgagtccagacaggttgctgctgttaacatcttgtataacttagggtg
+gacacacgaccctcacaaaggttggcagaaacctgcaccaaaattgagcgactacaaggc
+cccactgaaggctggcgagctggcaacgtgggaggatggttcccttggtggaaccgtgta
+tatccgcagcgtcggcaacaaattctcacaggtgtcccacgtccgtggcgttagcagact
+gggcgctaatgtactaaacggtagctttaccgtcgagaacagtaagttaaccgtgcgtcc
+gcgtgagtatttcatcgggcgtcgttaagtaacaggagaccactatgttagtatccgata
+tcgaggctaacaacctcttagagaaagtcactcagttccactgtggtgtcatttatgact
+acagcacggacgagtacgtatcgtatcgaccttgggacttctccgcgtatctcgatgcgc
+tggaagctgaggtggctcgtggtggtctcatcgtattccacaacggtcacaagtatgatg
+ccccagtgttaaccaaactggccaagctccagttaaaccgtgagttccacctgccgcgtg
+agaacgtagtggacacgttggttcttagccgtttgctgtttgcgaacatcaaagattccg
+atatggctcttctgcgttccggtaagttacccggtaagcgattcgggtctcacgctctgg
+aggcgtggggttaccgcttgggcgagatgaagggcgagtacaaggacgacttcaagaagc
+tccttgaggaacagggagaggactatgtggacggttctgagtggattagcttcaacgagc
+cgatgatggattataacgttcaggacgttgtggttaccaaggctctacttgagaagctac
+tgagcgacaagcattacttcccggatggtgatatccactggtgggcgcacgatgctgtag
+cattctggagcaactcgtgtgaggccgtctggttggaacatcgggccgcttggttacttg
+ctaagcaggagcgtaacggcttcccgtttgacaccaaggccattgaggaactttacgttg
+aactcgctggtcgtcgttctgaactccttcagacacttaccgacactttcggaacttggt
+atcagccaaagggcggcactgagttattccttcacccgcgcaccgggaagcctcttggta
+aatatccacgagtgaagtacccgaagcagggaggaatctacaagaaacccaagaacaaag
+ctcagcgtgagggacgtgaaccctgcgagctggacactcgggattacgtggagggcgctc
+cgtacacaccagtagagcacgttgtgttcaaccctagtagccgagaccacattgcactca
+agctgaaggaagccggatggatacctacagagttcaccgataaaggtgcacctaaggttg
+acgatgaggtccttgagcatgtgcgtgtggacaaccctgagaagcagcgctgtattgacc
+tcatcaaagagtacctgatgatacagaagcgtatcggtcaggcagctgagggcgacaaag
+cgtggctacgttacgttcaagaggatggtaaaattcatgggtccgttaaccctaatgggg
+ccgttacaggacgagcaacgcatagcttccctaacctcgcacaagtaccgggtagtcgtg
+ccccctatggtcaccagtgtcgcgctgcttttggcgctgagcatcaccttgatggcctta
+ctggcgatccttggattcaggtgggaattgacgcctcaggccttgagctgcgatgcctcg
+cccacttcatgtccaagtacgacaatggggcatatgcagacgttatccttaacggtgata
+tccattgggtaaacgctatagctgccgacttggcacctaacgtgcctcgtgataaggaga
+gtcaagagcatgagagtatgcgagataacgccaagacgttcatctacggtttcctctatg
+gtgctggagacgaaaagactggacagattgtgggagcaggtaaggaacgcggaaaggaac
+tcaagaagaaattccttgagaacaccccagcaatcgcagcgttgcgtgaaggaatccagc
+agaccctcgttgagtcatcccgctgggttgccggagagcagaaggtcaagtggaaacggc
+gctggattaagggactggatggaagaaaggtacacgttcggtcaccacatgccgcgctca
+acacgttgcttcagtcagcgggtgcgctcatttgtaagctgtggattgtcgagactgaag
+agttacttctcaaagcaggcttaaagcatggctgggatggggactttgcgtacatggcgt
+gggtacatgacgaaatccaagtggcctgccggacacctgagattgcacagcaggtgattg
+acacagcgcagcaagctatgcgtaacgtaggggaacactttaagttccgttgccgtctgg
+acacagaaggtaagatgggtcctaactgggccgtatgtcactaataataatacaggagat
+ttatcatgggcattaacaaacagtttcgcgtaacgttcgacgtaacggcgactatgagta
+acgagcaggagcaagagttcctcaaggaactcaaagagttagccaagggtcctcgtaacc
+cgcgtcaggataacattctggtccaagcgttgaccttcggtcctgagggtgccatcgtgg
+ctatcctcaaagatggactgcgtaagtccattaaggacttgggccgtgaagttaacagca
+gcgaactcacaattcgattcgcaccagctgaagtacgggtgaagtcatgagtgagtacct
+caaagttctggcggccctcaagggctgccctaagaccttccagtctaactacgtgcgcaa
+caacgctgcgttagtcgctgaggctgcgagccgtggtcacatttcgtgcctgaccatgag
+tggtcgcaatggtggcgcttgggaaattaccagtgccggagtgaaattccttaagaccca
+tggaggttgcttatgaaggactttttaggccaagatgtatcagtaggtgaccgcgtggta
+attacctcgtatggtggctacgggctgtctaaaggtaccattgagaagataaacccaaag
+accgtagtggtgcgcacaagccccggaaagtacgggacaactcgtaagggacccgagtat
+ttcgtaaagattcaggaggtgaccagtgagtaagcacacattgttatccttcagcgacta
+ccgggcaacccagaagattgccaagggtgtccttgtgatggatggtgactggctggtatt
+ccaagccatgagcgccgctgagtttgatgcctcgtgggaggaggagatttggcaccgttg
+ctgtgaccacgctaaggcccgcgagattctggagaactccattgaatcctacaagggccg
+caagaaggcgtggaagaatgccgacgttgtcctagcgttcaccgaccgtgtcaactggcg
+caagctgctggtggacccaacgtacaaagagaaccgcgcagtcgttaagaaacctgtggg
+ttacttcgagttccttgagtacgtcttcgagacctacacgtgcgtccttgagcctcagct
+agaaggcgatgacgtgatgggcatcatcgggtctaatccgcttccgtatcactacgagaa
+ggctgtgctggtctcctgcgacaaggactttaagaccatcccggattgtgacttcctgtg
+gtgtacgactggtaacatcctcgtgcagacgcaggagacagccgactactggcatctctt
+ccagactatcaagggtgacatcaccgatggttacggtggcatccccggttggggcgatac
+cgctgaggacttcctcaaggaaccattcattgtggagcctgtaacgtccgtgctgaagtc
+cggtaagaacaagggccaagaggtaaccaagtgggtgaaacgcgctcctgagccgggaga
+gacgctctgggactgcatcaagtccattggtgccaaagcagggatgaccgaagcggaagt
+aatcaagcagggccagatggctcgcatcctccgttctgatgagtacaacatcgagactgg
+ggagattactctatggcaaccgggcagctgattcttatcgtcctgaccatgggcttagtc
+gctcgtggtatctggatgttggccttgattatcaagcagatagtcgagcacaaagcagag
+tgataaactcatgggcacaattaggacccactatagggaagtgcccattatgattattac
+ttaaagattacttaaagaggagactcaaatgttaaaacctatagagcacatccttaacaa
+tcctaatgaccttcctgacgtaccgcgagctgtcaaggagtacctacagtctcgcttcaa
+tgctgacttcctgtatcaatcagaggtccgtaagctgcgtgaggctggtcacagtgagga
+gttcatctccggggtactgtatggtcactacatggcttctcgtgtcctcgacgagatgga
+gggtcgtcagcgtgcactcaaagaaggagattgattatgtgtttctcacctaagatgaaa
+gcacctaaggttgacacaacgactgtccctgagccagctccactaactgaggaacctaag
+ggtatccagtatggtggtgacgaagactcaaacagcaccactcctgaggtgtcggggcgt
+aagtcattaaaggtgaccaaaacgaccgagcctacagggtccgtcagtaaaattcgcaag
+tcagctttaggaggttaacatgggactgttcaagaagattaagaaggccatcaagaaggt
+agtcaaagcgccactcaaggccgttggtctggcagcagatgcacctaacgttcaggcagc
+cgctgagacacctgtggccgcacctcaggaagcaccgaaagaggtagtggaggacgttga
+atcttcagcagacactgagtctggcaagaagaaaactcgtgcgtccggtaagaagtccct
+ctcagtttcccgcagctcaggtggtgggattaacctgtaaggaggtgacccgtggcagaa
+gttaaactcgaaggcttcgcagaggagggagccaaggcggtgtatgaccgtctgaagaac
+gaccgacaaccttacgagacacgagcagagtcctgtgcgcagtacactattccctcgctg
+ttccctaaggactccgataacgcatcaaccgattacacgactccgtggcaatccgtaggt
+gctcgcggcctgaacaacctagcgtccaagctgatgctggccctgttcccgatgcagtca
+tggatgaagctgaccattagtgaatacgaagcgaagaaccttctcggtgacgctgagggt
+ctggctaaggtcgatgagggcctctcaatggtagagcgaatcatcatgaactacatcgag
+tccaacagttaccgagtgactctttttgagtgcttgaagcaactgtgtgtggctggtaac
+gcgctgctgtacttaccggagcctgagggttataccccgatgaagctctatcgactgaac
+tcgtatgtggtacagcgagacgctttcggtaacgtactccagattgtcaccctagacaag
+attgcgtttaacgctctccctgaggatgtccgcagccaagtggaagcagcccaaggtgat
+cagaaggaagacgctgagattgacgtctacacccatgtgtacctgaacgaagccggggat
+ggctactcgaagtacgaagaggttgccgaagcggtagtaccgggcagcgaggccgagtac
+ccactcgaagagtgtccgtacattccggtccgcatggtgcgcattgacggtgaatcctac
+ggtcgttcctacgttgaagagtatctgggtgacctcaagtccctagagaacctccaagag
+tccatcgtgaagatggcgatgattaccgcgaaggtcatcggtctggtagacccggcaggt
+atcactcaggtccgccgactcacggcagcacagtctggtgcgttcgtaccgggccgtaag
+caggacattgagttcctccagctggagaagtcaggtgactttaccgtagcgaagaacgta
+agcgacaccattgaggctcgcctctcgtatgcctttatgctcaacagtgcggtacaacgt
+acaggcgagcgagtcacagccgaagagattcggtacgtggcgtcagagctggaagatacc
+cttggtggtgtctactcgattctctcacaggaactccagctgcctctggtaagagtgctc
+ttaaagcaactacaagccacgcagcaaatcccggagttacctaaagaggccgtcgagcca
+actatcagcactggccttgaagctatcggacgtgggcaggaccttgacaagctggagcga
+tgcattgccgcatggtcagctcttaaggctctcgaaggcgatgatgacctcaacttggct
+aacctcaagttacgtatcgctaacgctatcggactcgacaccgctggtatgcttctcact
+caggagcagaagaacgcccttatggcacagcaaggcgctcagattgctacacagcaaggg
+gccgcagcgttgggtcaagggattgctacacaggctactgcaagtcctgaagcgatggcc
+gcagcggctgattctgtcggtatgcaaccgggcatgtaattagggcacactatagggaga
+tacatccagattgaatgaggtctggtcagaaggttcgagtccttcgtgtttccctcttag
+tcttaactttaaggagattgaaatggctggcgaatctaacgcagacgtatacgcatcctt
+cggtgttaacagtgctgtactgactggtagtacacctgaggagcaccaagaaaacatgtt
+ggctcttgatgttgctgcccgtgatggcgatgatgcaatcgagctgaacacaaacagtga
+tgacccgtatggttccgatgtggacccgttcggtgaacctgaagagggccgtatgcaggt
+ccgtatctccgctgacggttcagacgaacaggatggcgaagagggtcagggtgacgaaga
+acagcagggcgacgaggggagtcagccggaggaagtaaccgacgagggtgaacctgaaga
+gttcaaacctattggcgaaactccggctgacatcaacgaagcctctcagcagctggaaga
+acacgaagctggctttaacgacatggttgctactgcaatcgaacgcggtctctcacagga
+tgctgtgacccgtattcagcaggagtaccagaacgaggacagtttgtctgatgaatccta
+caaagagttggctgaggctggttacagtaaggcgttcgtcgatgcgtacattcgaggtca
+ggaggctctggtcaaccagtacgttgagaaagtgatggacttcgtgggaggccgtgagcg
+cttccagcaggtctacagccacatgcagaccaataaccctgagggtgccgaggcgctcat
+caaggcctttgagtctcgtgatgtagccaccatgaagacgattctgaacctagcgggaca
+gtctcgtgataaaacctttggtaagaaagccgagcgctctattgccaagcgtgcaatccc
+agcgaaacctgctccccgtaaggctgtaggcttcgagtctcaagctgagatgattaaggc
+gatgtccgacccgcgctaccgcaccgactctaagtatcgtcgtgaagtagagcaaaaggt
+aatcgactcaacgttctaatgaattagggcacactatagggagactgacaacctcgcaat
+aacggcgaccattcgtcaggtgcgagactgtgctatcagatagactaggagattatgggt
+gaggcctagactcccttcgagttacacaatgagtatcacctcgtttcaagtagtacctca
+atagcttggcaacgataggcccgtctggtcagcgtaatgactaattctattcgtaaacaa
+cataaggagattcaacatggctaacatgcaaggtggacagcagctcggtactaaccaagg
+taaaggtcaatccgcagcagacaagctggcgctattcctgaaagtattcggcggtgaagt
+cctgaccgcattcgcccgtacctctgtgaccaccaaccgtcacatgcagcgtcaaatcag
+ctccggtaagtccgcacagttccctgtgattggtcgcaccaaggctgcttacctgcaacc
+gggcgagtctctggatgacaaacgtaaagacatcaagcacactgagaagaccattaacat
+tgatggcctgctgaccgctgacgtgctgatttacgacatcgaagacgcgatgaaccacta
+tgacgttcgctccgagtacacctctcagattggtgaatctctggcgatggctgctgacgg
+tgcggttctggctgagctggctggtctggttaacctcgctgattccgtcaacgagaacat
+cgctggtcttggcaaaccgtccctgctggaagttggtgctaaggctgacctgaccgaccc
+ggttaaactgggccaagcggttatcgcgcagctgaccattgctcgtgcggctctgaccaa
+gaactacgtcccggctaacgaccgtacgttctacaccacccctgacgtgtactctgcgat
+tctggcggctctgatgcctaacgctgcgaactatgcggctctgattgaccctgagcgcgg
+ttctatccgtaacgtgatgggattcgaagtcgttgaggttccgcacctgaccgctggtgg
+tgctggcgatgatcgcccggacgaaggcgcagacgcgaccaaccagaagcacgccttccc
+ggcaactggtggtaaagtcaacaaagagaacgttgtgggcctgttccagcaccgttccgc
+tgtcggtaccgtcaagctgaaagacctcgctctggaacgtgctcgccgcactgagtatca
+ggctgaccagattgtcgctaagtacgcgatgggtcacggtggtctgcgtccagaatctgc
+gggtgcgctggttttcaaagcgtcggcttaagagtagcagcctttagtgcaaccgttgag
+agtgaaccggaagaagtagctctcacgcctcagcagaaggccgcaatcacacgtgcacgt
+aacaaggcacttaagtcgatggaacaataagccaaaccccttggggaccactcacggtct
+ctgaggggttttttcgttaggagcttacattatgaacatgcaagatgcttactttgggtc
+tgccgctgagctggatgccgtcaacgagatgctcgcagctatcggcgaatccccggtgac
+aacccttgacgaagatggtagcgcagacgtagcgaacgctcgtcgtatcctcaacaggat
+taaccgccagattcagtctaaaggttgggccttcaacataaacgagtcggccacattgac
+cccggataccaacacagggcttataccgttccgtccggcatacctgtccatccttggtgg
+ccagtatgttaaccgtggaggctgggtgtacgataagtcaaccgacactgacaccttctc
+aggaccaatcaccgtgaccctgattacccttcaggattacgacgagatgcccgaatgttt
+tcgccagtggattgtcaccaaggcaagccgccagttcaactctcggttcttcggagcgga
+ggacgtagagaactctctggcacaggaagagatggaagcgcgtatggcgtgcaacgagta
+cgagatggacttcgggcagtacaacatgcttgacggtgacgcatacgtgcagggtctcat
+cggtcgttaatcagaaacttaaggaggaccaaatgcgccattatgtcattgatgggaaga
+agacatgctcgcggtgcttagtgaataaacctgtgggagacttccctgtgaagatgcgga
+acggtcgagcgggtgtgtatccgtactgtaaaccctgccgcactgagtacaacaaagaga
+agggaaaggaacgcacgagtgaatataaccgggcagcgaacctaaagtcgaagttcggat
+tgactctagaggatttcaacaggatgctggaagaacaaggtggagcctgcgcaatatgtc
+ataagaagtcttctgaggtccttcgtgttgaccattgccacactactggaagggttagaa
+aacttctctgcggcccctgtaacacactactagggatggcatttgagaacagtgacaccc
+tgcggtcggctattaaatatctggaggagcacaaatgagcctagtaagccagtcaatcaa
+aaatctcaagggaggcattagccaacagcctgaaatcctacggtacccagagcagggtac
+acttcaggtcaacggttggtcctccgagactgagggtctccagaagcgaccacctatggt
+gttcatcaagtcccttggacctaggggctacttgggggaagacccgtacattcacctcat
+caaccgtgacgaatacgagcagtattacgctgtgttcaccgggaatgacgtacgggtgtt
+cgacctgtccggttatgagtaccaagtcagaggcgaccgctcgtatatctccgtagtcaa
+ccctaaggataacttgcgtatggtcaccgtggccgactatacgttcatcgtgaaccgcac
+tagacaggtccgtgagagtcagcacttgaccaacggtggtaccttcagagataacgtgga
+cgccctcattaacgttcgcggtggtcagtatgggcgtaagctcgaagtgaacattaacgg
+cgtgtgggtaagccaccagctccctccgggcgacaacgctaaggatgacccgcctaaggt
+ggacgcacaggctatcgctgaggccatcgcggttcttctacgcgcagcgcaccctacgtg
+gacgttcaatgttggaacagggttcatccactgcatcgctccagcaggtaccaccattga
+catactggagactaaggatggatacgccgaccagttaatcaatccggttactcactacgt
+ccagagcttctctaagttacctctgaacgcaccagatgggtacatggtgaagattgtcgg
+ggacacatccaagaccgctgaccagtattacgttaagtatgacaagagtcagaaggtctg
+gaaggaaactgtggggtggaacatctcgataggactggattacaccacgatgccttggac
+ccttgtaagggcagctgacggaaactttgacctcgggtatcacgattggaaggaccgccg
+tgctggtgatgatgacaccaaccctcaaccatcctttgtgaactcaacgataaccgacgt
+gttcttcttcaggaaccgcttagggttcatctctggggaaaacattgtgatgtcccgtac
+cagcaaatacttcgagttctacccgccgtcagtagccaactacacggacgacgacccgct
+ggatgttgctgttagtcataaccgagtgtctgtcctgaagtacgctgtgagcttcgctga
+ggagcttctactatggtctgacgaggcacagttcgtcctgtcggccaacggggtgttatc
+cgctaagacagcacagctggacctgaccactcagttcgatgtgtcagaccgtgcgcgtcc
+ttatggtatcggtaggaatatctactatgcgtctcctcgcagctcctttacgtccatcat
+gcgctactacgcggtacaggatgtaagctctgtgaagaacgcagaggacatgacggctca
+cgtaccaaattacatcccgaacggtgtgtatagcatcaacgggtctggtacggagaactt
+cgcgtgtgtactgaccaagggtgctccgagcaaggtattcatctacaagttcctctacat
+ggatgagaacatccggcagcagtcatggtcacactgggacttcggtgatgatactgaggt
+tatggccgcaaactgtatcaactcgacgatgtacatgcttatgcggaatgcctacaacgt
+gtggatagctgcggtggactttaagaagaactctacggactttccgttcgagccttaccg
+attccacgtggacgccaaacggtcataccacatctcagagactgcgtatgacattgagac
+gaaccagacggtagtgaacgtcaaggacatctacagtgcgtcgttctctaagggtaccgt
+ggcaatctgcgagagtgacggtaaaatcacggagtacgagcctacgggttcctcttggga
+ttcaaccccggacatccgcattagcggtgacatctcaggtaaggacattgtcatcgggtt
+cctgtacgacttccagtacgtgttcagtcggttcctcatcaagcaggagcagaatgacgg
+gacaacgtcaactatggactctggtcgtctacagctgcgtagagcttgggtgaactatca
+ggacactggtgcgttcactgtgagcgtcgataacggtagccgggagttcaactatctggt
+caacgcccgagttggttctactggcctacgtctgggccagaaggccacgaccactggtca
+gtatcgtttcccagtgacaggtaacgcactgtatcagaaggtgtccttgagttccttcaa
+cgcttccccagtgtcaatcattgggtgcggctgggaggggaactataccaaccgcgccag
+cggtatttaactgaacgtctccctgtggtgttgctcaattagggcacactatagggagac
+cacactaagaggggacttaaagcatgtacataagaaacactgtaagtaatgactttgatt
+tgttcgtcccggcctaccatgacgtacttgaggcacaggccatgggtatagaaccatcgt
+tcccagcggttaccgagtgtgtcacgttagaccacgatggttttcctttggctataggtg
+gaaattgcggagaccaatgctggttcgtcacgagtgaccaagtgtggagactcgacaggg
+ctggcaagctggagttccgtgagagaatcatggagtacagggacatgttattaaatgtgt
+atccatccctgtggaacttcgtgtgggtcggtaacggtccacacaagcggttccttaagt
+ccatcggtgctgtattccatgaggagtacactcagggtgggaagttccaactgttcacca
+taaggaggtaattatgtgctgggtagcagctattccaatcgccatgatggcggtacagtc
+tgtgagtagctcccgtaatgctgcacaagccacgggcctacagaatgaccaaatgcgcag
+acagtccgcccagatgattaaagaatcaaacattcagaacgccaacgccagccttgagca
+gaagcagaagctggaagaagccagtgcggacctgaccgctaagaatctcgataaggttca
+ggccatgggtacaatccgtgcagcaatcggagagggaaaccttgagggagccagtatgga
+ccgtatcagtcgaatcgaagagggtaagttcatccgggaggctaacgcggtcaccgataa
+ctaccgtcgagactatgcgtcattgttcgctcagcagctgggtaactctgagtcaactat
+tgaccaagttaaatccatgcagaaggctgagggtaaaggtaagtctaagctggagcaggt
+actcgacccgctggcgctgatgggttcacaggcagcatccgcatacgcttccggtgcgtt
+cgacagcaagtccaccaaggccccaatcagtcaggccaaaggtactaaggtaggaggtaa
+gtaatggccagtaaattagagcaagcattgaaccagataccacaggccgggtctacccgc
+atccgaggtggctcagcgtccatgcagtatcgcccagtgaccattcaacaggagggtgcc
+cgccagtccaacctagtgcagtccttggcgaagtttggggcagcaatgggtgaggcggca
+gacgcatacgataagcgacagcgggacaaggctgaggagcggtccgacgagattatccgc
+aagttgaccccagagcagcgacgagaggcaatcaagaatggtaccctgctgtatcaggat
+gacccgtacgctatggaggccctacggttcaagactggccgtaatgctgcgttcctcata
+gacgacgaagtggcacagaaggttcagaacggtgagttccgcactcgtaccgagatggaa
+gagtatagacacaagcggttgaccgaaggtgccaacgagttcgctgaacagttcatgatt
+aacccagaggactctgagttccagagggggttcaacgcgaacatcaccgagcgtaacatc
+tcactgtacggtaagcacgatatgttcctgagcgagcaggcacagaagggtgccatactg
+gcctcgaaggtggagctgtcaggtgtgctcaaagaccctgccgttctggcccgtccagag
+tccggtgagttcttccagcgctacatcgacaacgcgcttaagaccggaagtatccctagc
+gacgctcaggcgcagcaagtcatcattgggtccctcaacgatgtcatccagcgtccgggt
+gctaccaacttcttgcagagccttgagggccgtccggtcacccttaacgggaagaccacg
+acctacaaggaacttatgggagaggagcagtggaacgccctgatggtcaaggcccagtca
+acccagttcgacaatgacgctaagttgtccgaaggtttccgccttgggattaccagcgcg
+ttgaaccaagacgacaccagcaagggctgggagatgcttcagggtgccaaggcagaactg
+gaccgcctgcaacccggtgaacagatgacacccgagcgtgagcgcctgattcaagctgag
+gaacagatgcaagcccgtttccgtcaggaggcccaagcagcagccaaagagatggacaag
+cgccagaagaccatcaacaagaatcaggtcatcgaccagcagtttaccaagcgtatcaat
+ggccagtacgtgtccaccagctacaaggacatgccgaccaacgagaacaccggagagttc
+actcacagtgacatggtgaactacgctaacggtaagctggctgagattgaccagatgcag
+ctcactgagcaacagaaggaccgcatgaagctgagctacctccgggcagactcagagggt
+ggagccttccgtaccgtagtgggccagctggtaaccgacgctgggtctgaatggtctgcc
+gctgtgattaacggtaagttaccggaggataccacggcgttgaacaagctgcgcaccatg
+cgtaataccgacccggacctcttcgctgcactgtacccggacaaggctgacttgttcctg
+acgatggacatgatggacaagcagggcattgacccgcagattctcatagacgctgaccgt
+tctcgccgtagtctcaccaaagagatgcagtacgaggatgataaagcgtgggcgtccctg
+aagaacaactcagagtccccagagctgtcccgcattcccgctagtctggacggtatggcc
+cgtaagatttacgacagcgtcaagtaccggacaggtaacagcgacatggcaatgcagcag
+accgataagttcctcaaggaatccactgtgactttcaaaggtgacgacgtggacggtgat
+accattggtattatcccgaagaacatcctacaggtcagtgatgacccacgcagctgggag
+cagggccgggacatcctcgaagaagcccgtaagggaatcatcgcagctaacccttgggtg
+acaaacaagcagctgacgatgtaccagcagggtgactctatctacatgatggacaccact
+ggcactgtacgcatccgctacgacaaggagctactgactcggacctatcaggaacagcag
+cagcgactggccaaggaagctgaagagaaggcacttaaggaagcaaccaaacgtgcacct
+atctccgcagccactcaggcacgtaaggcagctggtgagcgcgtccgtgcgaaacgtaaa
+gccactccgaagttcatctatggaggtggtgaccaataaccattaaggagacaacatgag
+ctacgataagtccaaacctagtgattacgatggcatcttccagaaggcagcagactctca
+tggggtctcctatgacctcctgcgtaagttatcgtttaacgaatcatcatttaaccctaa
+ggccgtctctaagactggccctaagggcatcatgcagttcacccgaaacacggcccgctc
+gatgggccttaacgtgacagacggtgacgacgatgggcgctacaacccagagttagccat
+tgacgctggcgctaagctgcttgcaagtctcgtcaagaagtacaacggggatgagctaaa
+agctgccctagcgtacaaccaaggggaaggcccagcgggcgcgcctcagcttcaggctta
+cgataagggcgacttcgggtctatctcggaggaaggtcgtaactacatgcgcaagctgct
+ggacgtggccaagagtcctcagtctggtgctcttgaagcgttcggtggcatcaccccaaa
+gggtaaagggattcccgcagaggatgccttcaagggtatcgctaagactggcaaagttgg
+tactgagctgccggagtcccacgggttcaacattgagggtgtagcgcaggaagcaccaaa
+cactccatacgctaaggacttctgggagaagaccgggactactctcgatgagtataactc
+tcggtccaccttctttggcttcgggaatgctgcgagtgcagaactccagaactcgacctt
+aggtgtagctttccgtgctgcgcgggctgacgatgggtacgatgtgttcaaggacacgat
+gaccccgactcgctggaactcttatgttccctccaaggaagacctacagaagctgcgcga
+ctctgggttacctccgatctactatggtgtggtgactggtggtgacggtgagaactggga
+cgcactcatcaagctggccaaggataacttcgaggctgaccaacgggccgctgaggctgg
+tactggtgcgaaactcgcagctggtatcgttggtgctggtgtagacccgctcagctatgt
+tcctctggtcggtgtggccgggaagggactcaaggtggtcaataaggccctgcgagtggg
+tgcacaggctggagcactcagcgttgcctctgaaggtatccgtacgtcagtagctggtgg
+cgaagctcactacgctgatgcggcacttggagggttactgttcggtgctggcatgtcggc
+tctcagtgacgctgtggccgctggtatccgtaaggcacgtggcgtcgagtccgtgaatga
+gtttgctggtccagcactccgtatggaagcgcgagagactgccatcaacactggtggtca
+cgatacctctacattacctccagagaacttctcgttcgagcaggaccacagaggtgttcc
+gtttgccgaccacccgaccgaagagggcgcagtggttctggccaatggttccatcctgag
+tgataccaacccgcttaacccaaggactcaacgagacttcgcagagattgacccagagcg
+tgcagctcccggtatcaaactaggtgggttcactgagattggcctgaagacattagggtc
+caaggatgctggtgttcgtgcaatcgctcaggacctcgtacgctctccaacagggatgca
+atcagggtctagtggtaagtttggtgcgaccgcttcggacatccatgagcggctccatgc
+gactgaccagcggatgtacaaccaactgtatgacgctgttgaccgcgccatgaaggaccc
+agagttctccattggtgagcagaagatgtcacgcagagctatacgtcaggaagtctacaa
+gcgtgcggccttggcgattgagcgtccagagttacaggctgatttgaccaaaggtgaacg
+tgaggtgatggacctgctgaaagagcacttcgacaccaagcgtgagctgatggaacagcc
+gggtatcttcggtaacgccaacgccgtgagcatcttccccggtagtcgacacaagggtac
+ctacgtgcctaacgtgtacgacaggggtgctaaggaactgatgatgcagaagctgggcgg
+acctgaaggactccaacaggcaatcgctcagagctggcttaccagttaccgagtgcgacc
+tgaggtcaaggcacgtgtcgacgagtacctgatggaactcaacggctacaagtcggttga
+ccaagtgacacctgaggtggtccagaagcacgctatggataaggcgtacggtatcagcca
+tactgaggacttcacagcgtccagcatcattgacgacaacatcacaggtctggtcggtat
+cgagaacaactcgttccttgaggcccggaacatgttcgacagcgacctcccggttacctt
+accggatgggtcaaccttcagtgtcaacgacctgagggacttcgacatggcacggattgt
+cccagcgtacgaccgtcgagttaacggtgatatctccatcatgggcggtagcggtaagac
+cacgcagcagctcaaggacgaaatcatggcgttagacaagcgggctgagcgtaagggaca
+actgaagggcgaagtggaagcgctgaaggataccgttaagattctcactggacgtgctcg
+tcgtaataacgatacagcctttgagactgctatgcgcaccttgaacgacctagcgttctt
+cgctaagaacttctacatgggtccgcagaacctcacagagattgctgggatgttggctaa
+gggtaacgttaaggcgatgctccacggtatcccaacgttgcgagacctcgccaccagaac
+ctctccggtgtccggtagcgaactccgtgaactccatggggcgctgttcggtaaggaact
+agaccagttaatccgtccggggcgtgaggacatcgtgcagcgaatccgtgaggcttcaga
+taccagtggggccatggcgtcagtcattggtaccattaagttcggtactcaggagctgtc
+ggctcgttctccttggaccaagatgctgaacggtacggctaactacattctggacactgc
+ccgtcagggtgtgctcggtgatgtggctggtgcggccctaggcggtaagggttccaagtt
+tggcaaagagaacttcctcaaagctgcctctatcagtcctgagcagtggaagggaatcaa
+gcaactctttgtcgaccacgcgactcgtgatgctaacggccagttcaccatcaaggacaa
+gaaggctttcagccaggacccgagagcgatggacctgtggcggcttgccgataaggttgc
+cgacgagaccatgctgcgacctcacaaggtatcccagcaggattccaaggcgtatggcgc
+tggtgtcaagatggccatgcagttcaagaacttcaccatcaagtcactcaacgccaagtt
+catccggtccttctatgagggctacaagaacaaccgcgctatcgacatggcgttgaccca
+cgtgttgtctctgggtatcgccgggacttactttgcgatgcaggcccatgtgaaggctta
+cggcctccaagagtcccaacgtaaggactacctgaagaaggccctgaacccgaccatgct
+aggctacgcagcgttgactcgaagttcccacattggtgccccgctgtccatcgtctcgat
+gatggcaggtgccgctgggttccaagacgctaacatgctgcgctccaccatcttacctaa
+ggaggagcagttccagaagaaagacggagcgtccaaaggtcgggctgagtctagcaacct
+tgctggtaacttagggtctcaggttccagctctgggttacgtagggaacgtcattgcgac
+cgctaagaacgcctacggtgttgctacagcacctaacaagccgactgagcgtgactacat
+gactgggctgatgaactccaccaaggagcttgttccgaacgacccactgacccagcagct
+catcatgaaaatctatgaggctaacggtgtcaccatcaagcaacagccgaagcctaacta
+attaggacacactatagggagaccgattggtttccctcctcattcaactaaaggaggtca
+caatggaccaagacattaaaacagtcattcagtacccagtaggggccactgagttcgaca
+tcccgttcgactacctgtcccgtaagtttgtccgtgtgtcgctggtgtcagacgacaacc
+gcagactgctgagtaacatcactgagtaccgctacgtgtctaagaccagagtgaagctcc
+ttgtggaaactaccgggttcgaccgtgtggaaatccgcaggttcacctcagcgtcagagc
+gtgtggtcgacttcagcgatggttctgtgcttcgtgcagtggacctgaatgtttcacaac
+tccagtctgcacacattgcggaagaagcgcgtgatgcagcacttctggctatgccggagg
+atgacgctgggaacctcgacgctcgaaaccgtaagattgtcagactggctcccggtgaga
+ttggctcagacgctgtcaataaggaccagttggacacaactctaggtgaggctggtggta
+tgctcgcagatatgaaggaactcgataaggttattcgagatttcgtagagaactttgcga
+acgacccggcgtctcttcgcggcgttgtctgggtgtataatggtggtgctgccattggtg
+gtgagacgactatcattattgacaagcccggagacgtactggcagtaccctgtctgtata
+ttaatggcagccgtcaggatgttggaatcgcctatgattacgacaacaagaccaagacaa
+tcacgtttaagggggattccctccagactggagacttgctggtggctatgactgcggagg
+gttcggtacctttggctgacgtgcttatgagccttgctggcgcacgctacgttatgacct
+ctcgtgggattagtgttgaagcagcaatcgctggtatgcgtggtgatgttgtgaccctcg
+ttgatatgcactcagaagccgacggtaacgactatgcccctgcggcaacaaaagcgctgg
+cgactggtcgagccttgttcgtcccagctggtgagtggacgtttaatagtaccgtaagta
+tcccctctggtgccagaatcttcggaacaggcgcagggtctatccttcggtcgcccgagg
+caactgatgcggctggtacagcaatccagaccgtactaatgggacagaacgtatccaacg
+tggagcttaaagacttcaaggttaatggtggctcgggagcggtacatacggttaagcgta
+accgccgtggagttcgcttcattgagtgtcaagatgtgcgcgtcaaaggcctagaggtat
+cacgaacggctgactgggcgttgtcttttgagcgctgtaaaggcgtggtcgtagacaact
+atcgtcatcgtcgctctgagagtgcactgagcggtggccgtgatggccttcacttcttgg
+actgtgatggcttctctgcgactaatctcgacattgagtcacacgatgattgcgtcggga
+ttacctctgagaagtctggtacgtttgatgggattgtaaacacccttcgtggtacttcca
+tgattggctcactcgtgatttacaacgaggagcaagccagtggtcaatacatcccgacgc
+caatgcgtggactgattgtgaccaacatcagggccaagcggggtcagacggctcgccaac
+tggtccgaatcgctgcatatgctacaggttctaccgcaagtgatgttaccgtatccaatg
+ttcaaggtgatgttacggcgtcccatggtgtacagattcagtcagtatccaacgttaatc
+ttcgggacatcaacgtttcggtgattaactccagctctcatggtgtgtacttacaacgct
+gcgtaggcgtagtcggcaacgttcgcggtaagaccgtagcggcaacccacgatggaatcc
+agatgactggctgtaccaatgttgtgcttgaggcggaatccgcaggctcggcaggtaatg
+gtgtgcaggtcaacggatgtaccaacgtggtgcttagcgcagtgattgactctgcgggta
+ctaatggtgtacgtgttgttaactctaccaatgtggacatcccctcgggaatcttcagcg
+ggacattcggtatcttcggtatcaaccaagcgggcaacaccgggttcactcctagtgatt
+caattgtgtggaacaccacgtcccctcgcatcaataccgtagcgatgtctatggtgatga
+gaaccccaaccgtggtcattgaggccaaagaggattccaccggtgaactcattatctacc
+gtgcaatcggtgcaactattaccagagtggcaacaggtcggtacacaatatcgtatgcat
+caccaatgtcatcaactcagcattacttcagcgctgaggcattccatccgggtaacattc
+ggaacgtctacacgatatctgccgtatcaaccaacggtataactctcggtgttcgcaatg
+cagaaggtgtggatacctactctgagtatatccgatttgttgcttataactattaaggag
+gcactatgccacgtttcaatcagccgaaaggttcaaccattggtgtgctcagggatgggc
+gcactatccaagaggcattcgactctatgccccgccttgagtcatttgaagggagcacac
+ccactgacaaactccgggcggcaattaccctaggtgtatctgaggtagccattggtccag
+tagaaggaaatgatggtagtccttatgagttcggtgaggtggtgattccgtaccctctgc
+gtatcgtagggtgcggctctcagggaatcaacgttactaagggcaccgtgctcaaacgct
+ccgctggtgcatcctttatgtttcacttcagtggcgaaggtcagtcacagcgtcctatgg
+gcggaggcttgttcaatatcaacttgaacggcgactcagcgacggcactcggtgacatca
+ttaaggttacccagtggtcatgctttaaggctcagaactgttccttccagaatatggctg
+gctggggcatccgcctgaaagacgtaatggagtcaacaataactggcaacttgttccgac
+gcttgggcggaccgtctggtggtggtatactgttcgacgatatccggtcggcggtgacag
+acaacgttaacaacctccacattgaagacaatacgttcgcgcttatctctggaccatgga
+ttggatcaacagccaactcgaaccccgaccttatctggatttgtcgcaacaagttcgagt
+atgatggtacgccagctgtccctaacgaaaacccatcttacgtgctggactttgcgcagc
+tgagcagggcgtttatctctgagaacgggttcacccacttcactacagcacgtaacaatt
+atgctggcgtgttgaggatcggttcgacagcgttaggcactgtgctgttcgaagataacc
+tcctgttcgcttgtgagtcggctggtgtgattaatggtggtatcgtcgagagccgtggta
+acatcaacaaccaagggtctgccagcgcggctatcacccagttcaccaataactccagca
+aggtctgtaagctacagcgtgtggttaacatccagtctaacggtaacgtctctgtgggac
+cccagctgttccctgctggttacatcaacatggcagaacttccgggtaacactcggttat
+cttccgagtacgacgctgatggtgaaacaacatcggtactccgtgttccagcaaacactc
+aggttcgacaatgggctgtccccaagatgtatcaggatggactgacggttgccaaggtca
+ctgtacgggcaaatggtgcatcgtctggtgctatcatctcgttgcagagcggctcaaccg
+tattatccaccaagcctattgatgctggggtgtggaagaactacgtgttctacgtgaaag
+ctaaccaactgccagaaacgttgcagcttcgtaatacaggtactgttgatgccctcgtgg
+acggtatggtgttcgaaaaggttaactatattgactgggacttcgcggtgactccgggta
+cgctggccgtcggcgctaagtacacatcccccaaccaatcgtatctagacgttgccggga
+tgcgcgttcaagctgttagcacaccaatgtttgacggcccaacaactgggttacaggtct
+gggttgaggcaaccagcggcaacggttcgtttaccgtggtcatgaagaacgacacagcgg
+ctgagctggtgaccacagtaacacgatgccgagtaagagcattcgtctcataaggaggta
+atatgttgtccctagacttcaataacgaagttatcaaggcggctcccattgcgggtgtcg
+ctggggccgatggtgtagcgaggctcttctggggcctctcactcaacgagtggttctacg
+tcgcggcaatcgcctacacagtggttcaaattggtgccaaggtagtcgataaaatcattg
+actggaagaaagctaataaggagtaacacatggacctgattaagttcctcgaaatgttag
+acactgagatggctcagcagatgctcatggacctgaagaatccagagaagcggacccctc
+agctgtacaacgccattggtaaactactggagcgtcataagtttcaaatctctaagctga
+cccctgacgttaacatcttgggcggactggctgagggtctggaggcttataactccaagg
+tgggtgatgatggtctgacagatgacgataagttcaccctacagtgatatactcaaggta
+ctactatatgtagtgcctttatggatgtcattgcactacgctaggcgttcctacgtgaaa
+tctgagaaacatctggaggcattatgctggaaattacaaagagaatcgtcccgtatcttg
+tggttatcatggtgttcgccttcgggtggcacttcggttcacaatctacggacaccaagt
+ggaaggaggtagtacagaatgagtacgttcagaagcaaacggctagagttgaaactcaga
+aagcgattgatgcagtatcggctaagtaccaagcagaccttgaggggctggagggcagca
+ctgataggattattgctgatttgcgtagcgacaataagcggttgcgcgtcaaagtcaaac
+ctaccagtgtcgccgcaggaccagacggtcgatgcctcgttgatggttccgtcgaactac
+acgaagcaactgctcgaagtcttatcgcaataacccagaaggccgaccttaaagagaagg
+ccctacaggacacaatccgcaagctacaagggaaaggaggtgaacattgagtaactctca
+gcaagccaagaacgccttaatcattgcgcaactgaagggtgactttgtcgcctttctctt
+cgtgctctggaaggccctgaacctgccggaaccaaccaagtgtcaaatcgacatggccaa
+gtgtctggcgaacccaaagaacaagaagtttatccttcaggctttccgtggtatcgggaa
+gtcattcatcacgtgtgcgttcgtagtgtggaccctatggcgtgaccctcagttaaagat
+actgattgtctcggcctcaaaggaacgtgcggacgctaactccatcttcatcaagaacat
+catcgacttgttgcctttcctgagtgagcttaagcctcgccccggtcagcgtgactccgt
+gattagcttcgatgtaggccctgccaagccggaccacagcccgtcagttaagtctgtggg
+tattacgggtcagcttactggtagccgtgctgatatcatcattgcggatgacgtggagat
+tcccggtaactctgcaacccaaggtgctcgtgagaaactctggacgttggttcaggagtt
+cgccgcactgttgaagcctctaccgactagccgtgttatctatctggggacccctcagac
+cgagatgacgctctacaaggaacttgaggacaaccgtgggtactccaccatcatctggcc
+tgcgcagtatcctcgctccaaagaggaagacttgtactatggtgaccgactggctcctat
+gctccgtagtgagtacgatgaggacaaagagggtctcagtagccaacctaccgacccggt
+tcgattcgactctatggaccttcaggagcgtgaggtggaatacggcaaggctggctatac
+gcttcagttcatgctcaacccgaacctcagtgacgccgagaagtaccctctacgcctccg
+tgacgccatcgtgtgcggtctacaggcggacaaggccccaatgcactaccagtggttgcc
+gaaccgtcagaaccgcaatgaggagcttcctaacgtgggtatgaagggtgacgagattta
+ctccttccatacggcctcaagtaacactggtgcgtatcagggtaagattctggtcattga
+cccgagtggtcgcggtaaggatgagactggctggtgcgtactgtacacactaaacggcta
+catctacttgatggacgctggtggtactcgcggttacgaagagaagtcccttgagttcct
+cgctaagaaggctaagcagtggcaggtacagactgtggtcttcgagagtaacttcggtga
+cggcatgttcggtaacgtgttccagcctgtgctcctgaagcatcacccagcgcaactcga
+agagattcgtgctcgtggtatgaaagaggtccgcatctgcgatacccttgagcctgtact
+ggcaagtcaccgcttggttatccgtgacgaggtcatccgacaggactaccagacggcacg
+tgacgcagacggtaagcacgctctgaagtacagcctgttctaccagatgacccgtatgag
+ccgcgagaagggcgctgtggcacatgatgaccgacttgatgcgttagcattgggtgtcga
+gttcctacgctctacgatgcagcaggacgctgtgaagatagaggctgaggtacttcagga
+gttcttggagcaccacatggagaagcctctaagtaacatctcgcagttccgagccaccag
+cagcaacggtgtggacatccgatgggaagacgatggggatgactctatgttcatctcatg
+gtaaggaggtaatatgtttgacgtgaggtatgacccggatgtgccggggtgcctctctaa
+ctctaaaggtgagcaactcgcagttctacaaggagaatacttcaagtggaacggtgggag
+tgctcatcgtattgtatgggaaggcttcaatgggaggatacccgatggttacatgattga
+ccatataaaccgcaacaagcaggacaatcggatagagaacctacggatggttactcggtc
+ccagaatgtccacaactccaagcgtgcgagggctgatggtatgcctaagggaattacaga
+acgccagcgggactttaggattctggtccacaaggattgcaagaggtacgtaaggtatgc
+gccaacatccgagaggagcttgtagagtccttaggcctgtctgcatattatgtcgattca
+gacgcataaggattcattaagccacggaaggccacttttggaaaactctaggcataacag
+acacttggaattaggacccactatagggagagaccactcaaagattactataagacaact
+taaagattcattcatatagttattcactttaagtctccttacaggtagagggtagtgatg
+ataatatcaccctctcactataagacactaagagctaacacaaggaggacctatgcgctt
+actgttaaccttactgcgccataggactacttggcgatttctgctggtacttgctggtgc
+ccttggggcttcactggttactcagcagcaactcagtggactggagactctcgtgtgctc
+tctactcacttgtagcgattagggtcttcctgacgcgctagggattccgtagtgatgctt
+atcagcatacaccactccatccctctacagtcaatacttaaagttaaccttaggtgattc
+actgggtctacctactggtctatgcactgacctgaggactacctgaggttacctttaaga
+attttacacaaagttctgagtgtacatctcacagtttaaacttttggttatccccccccg
+gtaccctcccagttcacccaaagtaaccataggccaccctaaaccttcggtttaacctta
+ggtgggactgttgggaaaccttggggtgatactatatgttgtggtgagtgggaccttggg
+atactatatgtggctatctctgtgtccctatctgttggtactcattaagtcacaccttag
+gtatccaccttaggacctcctgaggttatacctgagaccatataccttaggttaaccata
+ggccatccggtgagccaccactataaggctatacaatgtaggttgtcaatataccaacca
+attaggacacactatagggagacactttaagtattactaagagaccattaccataaag
+	</sequence>
+</entry>
+</ROOT>
