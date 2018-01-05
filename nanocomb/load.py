@@ -89,7 +89,7 @@ def files_to_json(path, format = "embl"):
                     output = a.annotations
                     output.pop('references')
                     output.update({'parent': a.annotations['organism']})
-                    host = a.features[0].qualifiers['host'][0]
+                    host = a.features[0].qualifiers['host']
                     output.update({'host': host})
                     output.update({'seq': str(a.seq)})
 
@@ -122,4 +122,4 @@ def init(file, db, cell, client='localhost:27017'):
 
 cwd = os.getcwd()
 file = files_to_json(cwd + "/examples/")
-init(file,"testDB","testCell2")
+init(file,"testDB","testCell")
