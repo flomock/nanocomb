@@ -1,0 +1,6 @@
+Sort	Order	Family	Subfamily	Genus	Species	Type Species?	Exemplar Accession Number	Exemplar Isolate	Genome Composition	Last Change	MSL of Last Change	Proposal	Taxon History URL
+1	Bunyavirales	Feraviridae		Orthoferavirus	Ferak orthoferavirus	1	L:KP710246,M:KP710264,S:KP710267	ferak virus C51-CI-2004	ssRNA(-)	New,	31	2016.021a-dM.A.v2.Orthoferavirus	ICTVonline=20164769
+2	Bunyavirales	Fimoviridae		Emaravirus	Actinidia chlorotic ringspot-associated emaravirus	0	RNA1:KT861481,RNA2:KT861482,RNA3:KT861483,RNA4:KT861484,RNA5:KT861485	Actinidia chlorotic ringspot associated virus HN-6	ssRNA(-)	New,	31	2016.016aP.A.v3.Emaravirus_sp	ICTVonline=20164770
+3	Bunyavirales	Fimoviridae		Emaravirus	European mountain ash ringspot-associated emaravirus	1	RNA1: AY563040, RNA2: AY563041, RNA3: DQ831831, RNA4: DQ831828	Mielke	ssRNA(-)	Renamed,Moved,	31	2016.030a-vM.A.v6.Bunyavirales	ICTVonline=20164483
+4	Bunyavirales	Fimoviridae		Emaravirus	Fig mosaic emaravirus	0	RNA1: AM941711, RNA2: FM864225, RNA3: FM991954, RNA4: FM992851, RNA5: HE803826, RNA6: HE803827	Gr10 	ssRNA(-)	Renamed,Moved,	31	2016.030a-vM.A.v6.Bunyavirales	ICTVonline=20164484
+5	Bunyavirales	Fimoviridae		Emaravirus	High Plains wheat mosaic emaravirus	0	KJ939623 to KJ939631	Wheat mosaic virus -Nebraska	ssRNA(-)	Renamed,Moved,	31	2016.030a-vM.A.v6.Bunyavirales	ICTVonline=20164485

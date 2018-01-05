@@ -1,0 +1,91 @@
+ID   AB697843; SV 1; linear; viral cRNA; STD; VRL; 1490 BP.
+XX
+AC   AB697843;
+XX
+DT   25-APR-2012 (Rel. 112, Created)
+DT   02-JUL-2012 (Rel. 113, Last updated, Version 2)
+XX
+DE   Fig mosaic virus NP gene for nucleocapsid protein, complete cds, isolate:
+DE   JS1.
+XX
+KW   .
+XX
+OS   Fig mosaic emaravirus
+OC   Viruses; ssRNA viruses; ssRNA negative-strand viruses; Bunyavirales;
+OC   Fimoviridae; Emaravirus.
+XX
+RN   [1]
+RP   1-1490
+RA   Namba S., Ishikawa K., Maejima K., Komatsu K., Yamaji Y.;
+RT   ;
+RL   Submitted (09-FEB-2012) to the INSDC.
+RL   Contact:Shigetou Namba The University of Tokyo, Graduate School of
+RL   Agricultural and Life Sciences; Yayoi 1-1-1, Bunkyo-ku, Tokyo 113-8657,
+RL   Japan
+XX
+RN   [2]
+RC   DOI:10.1099/vir.0.042663-0
+RX   DOI; 10.1099/vir.0.042663-0.
+RX   PUBMED; 22513386.
+RA   Ishikawa K., Maejima K., Komatsu K., Kitazawa Y., Hashimoto M., Takata D.,
+RA   Yamaji Y., Namba S.;
+RT   "Identification and characterization of two novel genomic RNA segments of
+RT   fig mosaic virus, RNA5 and RNA6";
+RL   J. Gen. Virol. 93(Pt 7):1612-1619(2012).
+XX
+DR   MD5; 5d68fb1e395c912016c5391ec7eaef76.
+DR   EuropePMC; PMC4301128; 25320328.
+XX
+FH   Key             Location/Qualifiers
+FH
+FT   source          1..1490
+FT                   /organism="Fig mosaic emaravirus"
+FT                   /segment="3"
+FT                   /host="Ficus carica cv. Houraishi"
+FT                   /isolate="JS1"
+FT                   /mol_type="viral cRNA"
+FT                   /country="Japan:Shimane"
+FT                   /collection_date="2010"
+FT                   /db_xref="taxon:1980427"
+FT   CDS             100..1047
+FT                   /codon_start=1
+FT                   /transl_table=1
+FT                   /gene="NP"
+FT                   /product="nucleocapsid protein"
+FT                   /db_xref="GOA:I2FFL7"
+FT                   /db_xref="UniProtKB/TrEMBL:I2FFL7"
+FT                   /protein_id="BAM13802.1"
+FT                   /translation="MAPKSKTTSASSSKITPGHMQENTILLGSGSKLKAIKLTNVVNGK
+FT                   LTHPETSDLKPIDVEVQAFTSASQNISNFTLHKYRNICHVDTCAAHLSKSKENKEKLQA
+FT                   RNLRLIVSSNEFLVVVKELNDSTVDNVVSFNKACAIMSAGILKHTFDEEFDWKLSKYVK
+FT                   TNNTTKVIPDVKIINRLAGQMGLSAGNPYYWMIVPGYEFLYELYPAEVLAYTLVRLQYR
+FT                   KNLNIPDSMTDADIVSSLVMKMNRIHKLEQTSFDEALNLIGKDNVSEAYVELARDIGST
+FT                   SKTKRNDEAILKFKELIASFLPALEADRIASAHA"
+XX
+SQ   Sequence 1490 BP; 536 A; 225 C; 251 G; 478 T; 0 other;
+     agtagtgaac tcccataatt aactcaaaat caaacagatc taacatcatt tttatattgg        60
+     tattttactc caaagtactt tttttcatta gaatatatca tggcacctaa gagtaagact       120
+     acatcagcaa gctccagcaa gatcactcct ggtcatatgc aagaaaacac tatcttactg       180
+     ggctcaggtt caaagcttaa ggctattaaa ctgactaatg tggtcaacgg taagttaact       240
+     catcctgaga catctgactt gaagcctata gatgtagaag tgcaagcttt tacctctgca       300
+     agtcagaata ttagcaattt tacacttcac aagtatcgta acatatgtca tgttgacaca       360
+     tgtgctgcac atctctctaa gtctaaggag aataaagaga agcttcaagc cagaaatttg       420
+     agattgatcg tatcatcaaa tgaatttttg gtggttgtta aagagcttaa tgatagtaca       480
+     gttgacaatg ttgtttcatt taacaaagca tgtgctatca tgtcagctgg tatactcaaa       540
+     catacctttg atgaggaatt tgactggaaa ttatcaaagt atgtaaagac gaacaatact       600
+     actaaggtaa ttcctgatgt gaaaatcata aatagactag caggtcagat gggcttatca       660
+     gctggcaatc catattactg gatgattgtg cctggttatg aattcttgta tgaactttac       720
+     ccagctgagg tattagcata cactctggta agactccaat acaggaaaaa tctaaatata       780
+     ccagatagta tgactgatgc tgatattgtc agttctcttg ttatgaaaat gaatagaatt       840
+     cataaacttg aacagaccag ctttgatgaa gccctaaatc ttataggcaa ggataacgta       900
+     tctgaagctt atgtggaact tgcaagagat ataggaagca cgagcaagac aaagagaaat       960
+     gatgaagcaa ttcttaaatt taaggagtta attgcatcat tcctacctgc acttgaagca      1020
+     gataggattg caagtgctca tgcttgaact tgtcattagt cttttttaat gtttgtatta      1080
+     gtttgataat aagtttaata taattaatag tatatcttag tatatattaa tgtaatctaa      1140
+     gtgtgttatt agcaatatat atctatgttt atacttgcta aaaatacaaa attaaaaaaa      1200
+     caaaaatata taagataatg taaaatgtgt aagtgtgtgt gtatgttctt caagttcctc      1260
+     aaatatcaac agtgttcaat atatgtatta taatctattg tatgtttatc atgaaaaaaa      1320
+     accaaaaaaa gcaaaaaaat cacaaaaaaa caaaaaaaag acatatatgt atatatatgt      1380
+     cgaacttccg tctcaagaat ctatctgaca cgtatttttc tttattgata ccattgttag      1440
+     atttgttaag atttgactga tttagtttta aattatggga gaacactact                 1490
+//

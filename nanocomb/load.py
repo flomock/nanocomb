@@ -88,6 +88,7 @@ def files_to_json(path, format = "embl"):
                     a = SeqIO.read(f, format=format)
                     output = a.annotations
                     output.pop('references')
+                    output.update({'parent': a.annotations['organism']})
                     host = a.features[0].qualifiers['host']
                     output.update({'host': host})
                     output.update({'seq': str(a.seq)})
