@@ -3,25 +3,23 @@ import csv
 from collections import defaultdict
 # import itertools
 from pprint import pprint
+import os
+from pymongo import MongoClient
 
 
-def tree(): return defaultdict(tree)
+def new_tree(): return defaultdict(new_tree)
 
 
 def tree_add(t, path):
-  for node in path:
-    t = t[node]
+    for node in path:
+        t = t[node]
 
 
 def pprint_tree(tree_instance):
     def dicts(t): return {k: dicts(t[k]) for k in t}
     pprint(dicts(tree_instance))
 
-# def csv_to_tree(input):
-#     t = tree()
-#     for row in csv.reader(input, quotechar='\''):
-#         tree_add(t, row)
-#     return t
+
 
 
 def tree_to_newick(root):
@@ -43,7 +41,7 @@ def tree_to_newick(root):
 #     return tree_to_newick(t)
 
 
-def csv2newick(fp, out):
+def csv2dict(fp):
     '''
     Tested on ICTV virus taxonomy.
 
@@ -54,10 +52,10 @@ def csv2newick(fp, out):
     with open('tax.nwk', 'w+') as out:
         out.write(tree_to_newick(t) + '\n')
 
-    tree = Phylo.read(StringIO(csv2newick(fp)), 'newick')
+    new_tree = Phylo.read(StringIO(csv2newick(fp)), 'newick')
     '''
 
-    t = tree()
+    t = new_tree()
     with open(fp, 'r') as file:
         csv_reader = csv.reader(file, delimiter='\t')
         _ = next(csv_reader)  # discard header
@@ -69,4 +67,50 @@ def csv2newick(fp, out):
             except ValueError:
                 pass
             tree_add(t, tax)
-    return tree_to_newick(t)
+    return t
+
+def csv2newick(filepath):
+    return tree_to_newick(csv2dict(filepath))
+
+def add_all_leafs(file, collection):
+    """
+    1. go through tree leaves as potential parent parameter
+    2. search for parent db and add _id as leaf
+    3. return finished tree
+    :param file: basic dict, no _ids included
+    :param collection: the db entries, use _ids as new leafs
+    :return: dict with _ids as leafs
+    """
+    for k in iter(list(file)):
+
+        if len(list(file[k])) > 0:
+            add_all_leafs(file[k], collection)
+        else:
+            species = k
+            ids = []
+            for element in collection.find({"parent": species}, {"_id": 1}):
+                ids.append(element['_id'])
+            if len(ids) > 0:
+
+                tree = file[species]
+                for id in ids:
+                    tree[id]
+                # Uncomment if list wanted
+                # file.update({species:ids})
+
+    return
+
+
+
+def get_db(mongoclient="localhost:27017", db_name="testDB", collection_name="testCell"):
+    client = MongoClient(mongoclient)
+    db = client[db_name]
+    collection = db.get_collection(collection_name)
+    return collection
+
+cwd = os.getcwd()
+collection = get_db()
+file = csv2dict(cwd + "/examples/small.csv")
+add_all_leafs(file,collection)
+print(tree_to_newick(file))
+# add_all_leafs(tree,collection)
