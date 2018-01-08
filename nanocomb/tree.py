@@ -6,6 +6,7 @@ import os
 from pymongo import MongoClient
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split
 
 def new_tree(): return defaultdict(new_tree)
 
@@ -33,13 +34,6 @@ def tree_to_newick(root):
         s += k
         items.append(s)
     return ','.join(items)
-
-
-# def csv_to_weightless_newick(input):
-#     t = csv_to_tree(input)
-#     #pprint_tree(t)
-#     return tree_to_newick(t)
-
 
 def csv2dict(fp):
     '''
@@ -71,6 +65,62 @@ def csv2dict(fp):
 
 def csv2newick(filepath):
     return tree_to_newick(csv2dict(filepath))
+
+def ncbi_tax2dict(data_dir):
+    col_delimiter = '\t|\t'
+    row_delimiter = '\t|\n'
+    print('Getting names...')
+    scientific_names = {}
+    common_names = {}
+    with open(os.path.join(data_dir, 'names.dmp')) as names_file:
+        for line in names_file:
+            line = line.rstrip(row_delimiter)
+            values = line.split(col_delimiter)
+            tax_id, name_txt, _, name_type = values[:4]
+            if name_type == 'scientific name':
+                scientific_names[int(tax_id)] = name_txt
+            elif name_type == 'common name':
+                common_names[int(tax_id)] = name_txt
+
+    print('Reading taxonomy...')
+    nodes = new_tree()
+    with open(os.path.join(data_dir, 'nodes.dmp')) as nodes_file:
+        for line in nodes_file:
+            line = line.rstrip(row_delimiter)
+            values = line.split(col_delimiter)
+            tax_id, parent_id = values[:2]
+            tax_id = int(tax_id)
+            parent_id = int(parent_id)
+            # this_node = Newick.Clade(name=scientific_names[tax_id])
+            this_node = nodes[parent_id]
+            if len(this_node) == 0:
+                nodes.update({parent_id:[tax_id]})
+            else:
+                names = this_node
+                names.append(tax_id)
+
+    def build_dict_tree(nodes_dict,file,parent='root'):
+
+        file = file[parent]
+        for child in nodes_dict[parent]:
+            file[child]
+            build_dict_tree(nodes_dict,file,parent=child)
+
+    def prepare_dict(nodes_dict,parent='root'):
+        dict_tree = new_tree()
+        dict_tree['root']
+        print("building dict tree...")
+        dict_tree = dict_tree[parent]
+        for child in nodes_dict[1]:
+            print(scientific_names[child])
+            if scientific_names[child] != 'cellular organisms':
+                continue
+            build_dict_tree(nodes_dict, dict_tree, parent=child)
+        return dict_tree
+
+    dict_tree = prepare_dict(nodes)
+    print("finish")
+    return dict_tree,scientific_names,common_names
 
 def add_all_leafs(file, collection):
     """
@@ -108,7 +158,7 @@ def get_db(mongoclient="localhost:27017", db_name="testDB", collection_name="tes
     collection = db.get_collection(collection_name)
     return collection
 
-def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all"):
+def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all", min_samples = 100):
     """
     get samples which fulfill the clade conditions
     :param virus_file: dict tree for viruses
@@ -171,8 +221,6 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         ids = set(virus).intersection(host)
         return ids
 
-    ids = compare_ids(virus_leaves,host_leaves)
-
     def get_table_samples(ids):
         """
         parse ids to usable sample table
@@ -185,19 +233,50 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
                 l.append(element)
         gen = ((i['_id'], i['host'], i['seq'], i['parent']) for i in l)
         df = pd.DataFrame.from_records(gen, columns=['id', 'host', 'seq', 'parent'])
-        print(df)
+        # print(df)
         # test = pd.DataFrame()
         # for h in HOSTS:
         #     df_host = df[df.host == h]
         #     test_sub = df_host.sample(frac=SIZE, random_state=SEED)
         #     test = test.append(test_sub)
+        return df
 
-    get_table_samples(ids)
+    ids = compare_ids(virus_leaves,host_leaves)
+    df = get_table_samples(ids)
 
+    def get_training_sets(df,min_samples):
+        output_samples = []
+        output_df = pd.DataFrame()
+        for host in df.host.unique():
+            df_host = df[df.host == host]
+            # print(df_host.host.count())
+            if df_host.host.count() >= min_samples:
+                samples = df_host.sample(n=min_samples)
+                output_samples.append(samples)
+
+        for i in output_samples:
+            output_df = output_df.append(i)
+
+        return output_df
+
+    return get_training_sets(df,min_samples)
 
 cwd = os.getcwd()
-collection = get_db()
-virus_tree = csv2dict(cwd + "/examples/small.csv")
-add_all_leafs(virus_tree, collection)
-print(tree_to_newick(virus_tree))
-samples = get_samples(virus_tree, None, collection, virus_clade="all")
+# collection = get_db()
+# virus_tree = csv2dict(cwd + "/examples/small.csv")
+# add_all_leafs(virus_tree, collection)
+# print(tree_to_newick(virus_tree))
+# samples = get_samples(virus_tree, None, collection, virus_clade="all",min_samples=1)
+
+def save_set(samples, dir=cwd):
+    X_train, X_test, Y_train, Y_test = train_test_split(samples.seq, samples.host, test_size=0.2, random_state=0)
+    X_train.to_csv(cwd + '/X_train.csv', sep='\t', encoding='utf-8')
+    X_test.to_csv(cwd + '/X_test.csv', sep='\t', encoding='utf-8')
+    Y_train.to_csv(cwd + '/Y_train.csv', sep='\t', encoding='utf-8')
+    Y_test.to_csv(cwd + '/Y_test.csv', sep='\t', encoding='utf-8')
+
+# save_set(samples)
+
+
+# Todo Caution, use kfold for training.
+dict_tree,scientific_names,common_names = ncbi_tax2dict(cwd+"/examples")
