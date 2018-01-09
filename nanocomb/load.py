@@ -85,16 +85,24 @@ def files_to_json(path, format = "embl"):
         with open(path + "nanocomb.json", 'w+') as outjson:
             for f in file.glob('*'+suffix):
                 with open(f, "r") as f:
-                    a = SeqIO.read(f, format=format)
-                    output = a.annotations
-                    output.pop('references')
-                    output.update({'parent': a.annotations['organism']})
-                    host = a.features[0].qualifiers['host'][0]
-                    output.update({'host': host})
-                    output.update({'seq': str(a.seq)})
+                    records = SeqIO.parse(f, format=format)
+                    for record in records:
+                        output = record.annotations
+                        output.pop('references')
+                        output.update({'parent': record.annotations['organism']})
+                        try:
+                            host = record.features[0].qualifiers['host'][0]
 
-                outjson.write(json.dumps(output) + '\n')
-                outputs.append(json.dumps(output))
+                        except:
+                            print(record)
+                            print()
+                            continue
+
+                        output.update({'host': host})
+                        output.update({'seq': str(record.seq)})
+
+                        outjson.write(json.dumps(output) + '\n')
+                        outputs.append(json.dumps(output))
         return outputs
 
     else:
@@ -121,5 +129,5 @@ def init(file, db, cell, client='localhost:27017'):
     print('Primary key assigned to field "_id".')
 
 cwd = os.getcwd()
-file = files_to_json(cwd + "/examples/")
-init(file,"testDB","testCell2")
+file = files_to_json(cwd + "/samples/")
+init(file,"FinalDB","allData")

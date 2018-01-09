@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
+
 def new_tree(): return defaultdict(new_tree)
 
 
@@ -18,9 +19,8 @@ def tree_add(t, path):
 
 def pprint_tree(tree_instance):
     def dicts(t): return {k: dicts(t[k]) for k in t}
+
     pprint(dicts(tree_instance))
-
-
 
 
 def tree_to_newick(root):
@@ -35,18 +35,12 @@ def tree_to_newick(root):
         items.append(s)
     return ','.join(items)
 
+
 def csv2dict(fp):
     '''
-    Tested on ICTV virus taxonomy.
-
-    from io import StringIO
-    from Bio import Phylo
-
-
-    with open('tax.nwk', 'w+') as out:
-        out.write(tree_to_newick(t) + '\n')
-
-    new_tree = Phylo.read(StringIO(csv2newick(fp)), 'newick')
+    parse ICTV csv to virus tree
+    :param fp: filepath to csv
+    :return: dict tree
     '''
 
     t = new_tree()
@@ -63,10 +57,18 @@ def csv2dict(fp):
             tree_add(t, tax)
     return t
 
+
 def csv2newick(filepath):
     return tree_to_newick(csv2dict(filepath))
 
+
 def ncbi_tax2dict(data_dir):
+    """
+    get ncbi tax data and parses it to phylogenetic tree dict
+    :param data_dir: path to names.dmp and nodes.dmp
+    :return: phylo dict, and dict to translate id in name
+    """
+
     col_delimiter = '\t|\t'
     row_delimiter = '\t|\n'
     print('Getting names...')
@@ -94,19 +96,19 @@ def ncbi_tax2dict(data_dir):
             # this_node = Newick.Clade(name=scientific_names[tax_id])
             this_node = nodes[parent_id]
             if len(this_node) == 0:
-                nodes.update({parent_id:[tax_id]})
+                nodes.update({parent_id: [tax_id]})
             else:
                 names = this_node
                 names.append(tax_id)
 
-    def build_dict_tree(nodes_dict,file,parent='root'):
+    def build_dict_tree(nodes_dict, file, parent='root'):
 
         file = file[parent]
         for child in nodes_dict[parent]:
             file[child]
-            build_dict_tree(nodes_dict,file,parent=child)
+            build_dict_tree(nodes_dict, file, parent=child)
 
-    def prepare_dict(nodes_dict,parent='root'):
+    def prepare_dict(nodes_dict, parent='root'):
         dict_tree = new_tree()
         dict_tree['root']
         print("building dict tree...")
@@ -120,9 +122,10 @@ def ncbi_tax2dict(data_dir):
 
     dict_tree = prepare_dict(nodes)
     print("finish")
-    return dict_tree,scientific_names,common_names
+    return dict_tree, scientific_names, common_names
 
-def add_all_leafs(file, collection):
+
+def add_all_leaves_virus(file, collection):
     """
     1. go through tree leaves as potential parent parameter
     2. search for parent db and add _id as leaf
@@ -134,7 +137,7 @@ def add_all_leafs(file, collection):
     for k in iter(list(file)):
 
         if len(list(file[k])) > 0:
-            add_all_leafs(file[k], collection)
+            add_all_leaves_virus(file[k], collection)
         else:
             species = k
             ids = []
@@ -151,14 +154,61 @@ def add_all_leafs(file, collection):
     return
 
 
+def add_all_leafs_host(file, collection, scien_dict, common_dict):
+    """
+    1. go through tree leaves as potential parent parameter
+    2. search for parent db and add _id as leaf
+    3. return finished tree
+    :param file: basic dict, no _ids included
+    :param collection: the db entries, use _ids as new leafs
+    :return: dict with _ids as leafs
+    """
+    for k in iter(list(file)):
+
+        if len(list(file[k])) > 0:
+            add_all_leafs_host(file[k], collection, scien_dict, common_dict)
+        else:
+            species_s = scien_dict[k]
+            try:
+                species_c = common_dict[k]
+            except:
+                species_c = -1
+                pass
+            ids = []
+            # if species_s == "Ficus carica":
+            #     print("hurra")
+            # species_s = "Ficus carica"
+            for element in collection.find({"host": species_s}, {"_id": 1}):
+                ids.append(element['_id'])
+            for element in collection.find({"host": species_c}, {"_id": 1}):
+                ids.append(element['_id'])
+
+            if len(ids) > 0:
+
+                tree = file[k]
+                for id in ids:
+                    tree[id]
+                # Uncomment if list wanted
+                # file.update({species:ids})
+
+    return
+
 
 def get_db(mongoclient="localhost:27017", db_name="testDB", collection_name="testCell2"):
+    """
+    get mongoDB collection of interest
+    :param mongoclient: which port to speak mongoDB
+    :param db_name: name of Database
+    :param collection_name: name of collection
+    :return: collection
+    """
     client = MongoClient(mongoclient)
     db = client[db_name]
     collection = db.get_collection(collection_name)
     return collection
 
-def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all", min_samples = 100):
+
+def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all", min_samples=100):
     """
     get samples which fulfill the clade conditions
     :param virus_file: dict tree for viruses
@@ -168,22 +218,23 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
     :param virus_clade: which virus clade should be used
     :return: samples as pandas array
     """
-    #zugriff auf daten durch angabe von Host und Clade
+
+    # zugriff auf daten durch angabe von Host und Clade
     def get_leaves(file):
         """
         go to leafs of tree and put together in array
         :param file: dict tree representation
         :return: Array[Ids]
         """
-        leave = np.array([])
+        leaf = np.array([])
         for k in iter(list(file)):
 
             if len(list(file[k])) > 0:
-                leave = np.append(leave,get_leaves(file[k]))
+                leaf = np.append(leaf, get_leaves(file[k]))
             else:
-                leave = np.append(leave,k)
+                leaf = np.append(leaf, k)
 
-        return leave
+        return leaf
 
     def get_ids(file, filter):
         """
@@ -198,7 +249,7 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
                 return virus_leaves
             else:
                 if len(file[k].keys()) > 0:
-                    found = get_ids(file[k],filter)
+                    found = get_ids(file[k], filter)
                     if len(found) > 0:
                         return found
         return []
@@ -208,16 +259,16 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
     else:
         virus_leaves = get_ids(virus_file, virus_clade)
 
-    if host_clade == "all": #TODO delete hard coded example
-        host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
-        # host_leaves = get_leaves(host_file)
+    if host_clade == "all":  # TODO delete hard coded example
+        # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
+        host_leaves = get_leaves(host_file)
     else:
-        # host_leaves = get_ids(host_file,host)
-        host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51","71057421-e62a-4633-b3ba-f2348f77c4bc"])
+        host_leaves = get_ids(host_file)
+        # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
     assert len(virus_leaves) > 0, "no valid virus clade"
     assert len(host_leaves) > 0, "no valid host clade"
 
-    def compare_ids(virus,host):
+    def compare_ids(virus, host):
         ids = set(virus).intersection(host)
         return ids
 
@@ -227,24 +278,19 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         :param ids: ids of interest
         :return: pandas dataframe with id, host, seq and parent of samples
         """
-        l=[]
+        l = []
         for id in ids:
             for element in collection.find({"_id": id}):
                 l.append(element)
         gen = ((i['_id'], i['host'], i['seq'], i['parent']) for i in l)
         df = pd.DataFrame.from_records(gen, columns=['id', 'host', 'seq', 'parent'])
-        # print(df)
-        # test = pd.DataFrame()
-        # for h in HOSTS:
-        #     df_host = df[df.host == h]
-        #     test_sub = df_host.sample(frac=SIZE, random_state=SEED)
-        #     test = test.append(test_sub)
+
         return df
 
-    ids = compare_ids(virus_leaves,host_leaves)
+    ids = compare_ids(virus_leaves, host_leaves)
     df = get_table_samples(ids)
 
-    def get_training_sets(df,min_samples):
+    def get_training_sets(df, min_samples):
         output_samples = []
         output_df = pd.DataFrame()
         for host in df.host.unique():
@@ -259,24 +305,32 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
 
         return output_df
 
-    return get_training_sets(df,min_samples)
+    return get_training_sets(df, min_samples)
+
+
+def save_set(samples, dir):
+    """
+    save samples as train and test set
+    :param samples: dataframe with seq and host
+    :param dir: where to save output
+    :return: saves csv files for training and test
+    """
+    X_train, X_test, Y_train, Y_test = train_test_split(samples.seq, samples.host, test_size=0.2, random_state=0)
+    X_train.to_csv(dir + '/X_train.csv', sep='\t', encoding='utf-8')
+    X_test.to_csv(dir + '/X_test.csv', sep='\t', encoding='utf-8')
+    Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
+    Y_test.to_csv(dir + '/Y_test.csv', sep='\t', encoding='utf-8')
+
 
 cwd = os.getcwd()
-# collection = get_db()
-# virus_tree = csv2dict(cwd + "/examples/small.csv")
-# add_all_leafs(virus_tree, collection)
+collection = get_db()#(db_name="FinalDB", collection_name="allData")
+virus_tree = csv2dict(cwd + "/examples/ICTV_Master_Species_List_2016v1.3.csv")
+add_all_leaves_virus(virus_tree, collection)
 # print(tree_to_newick(virus_tree))
-# samples = get_samples(virus_tree, None, collection, virus_clade="all",min_samples=1)
+host_tree, scientific_names, common_names = ncbi_tax2dict(cwd + "/examples")
+add_all_leafs_host(host_tree, collection, scientific_names, common_names)
 
-def save_set(samples, dir=cwd):
-    X_train, X_test, Y_train, Y_test = train_test_split(samples.seq, samples.host, test_size=0.2, random_state=0)
-    X_train.to_csv(cwd + '/X_train.csv', sep='\t', encoding='utf-8')
-    X_test.to_csv(cwd + '/X_test.csv', sep='\t', encoding='utf-8')
-    Y_train.to_csv(cwd + '/Y_train.csv', sep='\t', encoding='utf-8')
-    Y_test.to_csv(cwd + '/Y_test.csv', sep='\t', encoding='utf-8')
-
-# save_set(samples)
-
+samples = get_samples(virus_tree, host_tree, collection, virus_clade="all", min_samples=1)
+save_set(samples)
 
 # Todo Caution, use kfold for training.
-dict_tree,scientific_names,common_names = ncbi_tax2dict(cwd+"/examples")
