@@ -8,10 +8,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 59d98538e7f764e20675d0bcebac4a7890f77ac9
 def new_tree(): return defaultdict(new_tree)
 
 
@@ -22,18 +19,7 @@ def tree_add(t, path):
 
 def pprint_tree(tree_instance):
     def dicts(t): return {k: dicts(t[k]) for k in t}
-<<<<<<< HEAD
 
-    pprint(dicts(tree_instance))
-
-
-=======
-    pprint(dicts(tree_instance))
-
-
-
-
->>>>>>> 59d98538e7f764e20675d0bcebac4a7890f77ac9
 def tree_to_newick(root):
     items = []
     for k in iter(root.keys()):
