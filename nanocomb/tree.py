@@ -4,10 +4,12 @@ from collections import defaultdict
 from pprint import pprint
 import os
 from pymongo import MongoClient
+import pymongo
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-
+import json
+import re
 
 def new_tree(): return defaultdict(new_tree)
 
@@ -111,18 +113,17 @@ def ncbi_tax2dict(data_dir):
         print("building dict tree...")
         dict_tree = dict_tree[parent]
         for child in nodes_dict[1]:
-            print(scientific_names[child])
+            # print(scientific_names[child])
             if scientific_names[child] != 'cellular organisms':
                 continue
             build_dict_tree(nodes_dict, dict_tree, parent=child)
         return dict_tree
 
     dict_tree = prepare_dict(nodes)
-    print("finish")
     return dict_tree, scientific_names, common_names
 
 
-def add_all_leaves_virus(file, collection):
+def add_all_leaves_virus(file, collection,include_inner_nodes = False):
     """
     1. go through tree leaves as potential parent parameter
     2. search for parent db and add _id as leaf
@@ -131,27 +132,47 @@ def add_all_leaves_virus(file, collection):
     :param collection: the db entries, use _ids as new leafs
     :return: dict with _ids as leafs
     """
+    species_list = []
     for k in iter(list(file)):
 
-        if len(list(file[k])) > 0:
+        if len(list(file[k])) > 0 and not include_inner_nodes:
             add_all_leaves_virus(file[k], collection)
         else:
+            if len(list(file[k])):
+                add_all_leaves_virus(file[k], collection)
+
             species = k
             ids = []
-            for element in collection.find({"parent": species}, {"_id": 1}):
-                ids.append(element['_id'])
-            if len(ids) > 0:
 
-                tree = file[species]
-                for id in ids:
-                    tree[id]
+            # for element in collection.find({"parent": species}, {"_id": 1}):
+            # for element in collection.find({"parent": {'$in': [re.compile(species)]}}, {"_id": 1}):
+
+
+            sub = species.split(" ")
+            species_list.append(sub[0]+" "+sub[1])
+            # for element in collection.find({"parent": re.compile(sub[0]+" "+sub[1])}, {"_id": 1}):
+            #     ids.append(element['_id'])
+            # if len(ids) > 0:
+            #
+            #     tree = file[species]
+            #     for id in ids:
+            #         tree[id]
                 # Uncomment if list wanted
                 # file.update({species:ids})
+
+    for species in set(species_list):
+        for element in collection.find({"parent": re.compile(species)}, {"_id": 1}):
+            ids.append(element['_id'])
+        if len(ids) > 0:
+
+            tree = file[species]
+            for id in ids:
+                tree[id]
 
     return
 
 
-def add_all_leafs_host(file, collection, scien_dict, common_dict):
+def add_all_leafs_host(file, collection, scien_dict, common_dict, include_inner_nodes = True):
     """
     1. go through tree leaves as potential parent parameter
     2. search for parent db and add _id as leaf
@@ -162,9 +183,13 @@ def add_all_leafs_host(file, collection, scien_dict, common_dict):
     """
     for k in iter(list(file)):
 
-        if len(list(file[k])) > 0:
+        if len(list(file[k])) > 0 and not include_inner_nodes:
             add_all_leafs_host(file[k], collection, scien_dict, common_dict)
+
         else:
+            if len(list(file[k])) > 0:
+                add_all_leafs_host(file[k], collection, scien_dict, common_dict)
+
             species_s = scien_dict[k]
             try:
                 species_c = common_dict[k]
@@ -172,21 +197,21 @@ def add_all_leafs_host(file, collection, scien_dict, common_dict):
                 species_c = -1
                 pass
             ids = []
-            # if species_s == "Ficus carica":
-            #     print("hurra")
-            # species_s = "Ficus carica"
+
             for element in collection.find({"host": species_s}, {"_id": 1}):
                 ids.append(element['_id'])
-            for element in collection.find({"host": species_c}, {"_id": 1}):
-                ids.append(element['_id'])
+
+            if species_c != -1:
+                for element in collection.find({"host": species_c}, {"_id": 1}):
+                    ids.append(element['_id'])
 
             if len(ids) > 0:
-
                 tree = file[k]
                 for id in ids:
                     tree[id]
                 # Uncomment if list wanted
                 # file.update({species:ids})
+
 
     return
 
@@ -202,6 +227,8 @@ def get_db(mongoclient="localhost:27017", db_name="testDB", collection_name="tes
     client = MongoClient(mongoclient)
     db = client[db_name]
     collection = db.get_collection(collection_name)
+    collection.create_index([("host", pymongo.DESCENDING)])
+    collection.create_index([("parent", pymongo.DESCENDING)])
     return collection
 
 
@@ -250,17 +277,17 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
                     if len(found) > 0:
                         return found
         return []
-
+    print("getting samples")
     if virus_clade == "all":
         virus_leaves = get_leaves(virus_file)
     else:
         virus_leaves = get_ids(virus_file, virus_clade)
 
-    if host_clade == "all":  # TODO delete hard coded example
+    if host_clade == "all":
         # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
         host_leaves = get_leaves(host_file)
     else:
-        host_leaves = get_ids(host_file)
+        host_leaves = get_ids(host_file,host_clade)
         # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
     assert len(virus_leaves) > 0, "no valid virus clade"
     assert len(host_leaves) > 0, "no valid host clade"
@@ -318,16 +345,31 @@ def save_set(samples, dir):
     Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
     Y_test.to_csv(dir + '/Y_test.csv', sep='\t', encoding='utf-8')
 
+def get_virus_tree(collection, path_csv= os.getcwd() + "/examples/ICTV_Master_Species_List_2016v1.3.csv", path_output_json= os.getcwd() + "/examples/" + "virus_tree.json"):
+    print("getting virus tree")
+    virus_tree = csv2dict(path_csv)
+    add_all_leaves_virus(virus_tree, collection)
+    with open(path_output_json, 'w+') as outjson:
+        output = json.dumps(virus_tree)
+        outjson.write(output)
+    return virus_tree
 
-cwd = os.getcwd()
-collection = get_db()#(db_name="FinalDB", collection_name="allData")
-virus_tree = csv2dict(cwd + "/examples/ICTV_Master_Species_List_2016v1.3.csv")
-add_all_leaves_virus(virus_tree, collection)
-# print(tree_to_newick(virus_tree))
-host_tree, scientific_names, common_names = ncbi_tax2dict(cwd + "/examples")
-add_all_leafs_host(host_tree, collection, scientific_names, common_names)
+def get_host_tree(collection, path_ncbi_files= os.getcwd() + "/examples", path_output_json= os.getcwd() + "/examples/" + "host_tree.json"):
+    print("getting host tree")
+    host_tree, scientific_names, common_names = ncbi_tax2dict(path_ncbi_files)
+    print("add leaves to host tree")
+    add_all_leafs_host(host_tree, collection, scientific_names, common_names)
+    with open(path_output_json, 'w+') as outjson:
+        output = json.dumps(host_tree)
+        outjson.write(output)
 
-samples = get_samples(virus_tree, host_tree, collection, virus_clade="all", min_samples=1)
-save_set(samples)
+collection = get_db(db_name="FinalDB", collection_name="allData")
+virus_tree = get_virus_tree(collection)
+exit()
+# virus_tree = json.load(open(os.getcwd() + "/examples/" + "virus_tree.json"))
+host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree.json"))
+
+samples = get_samples(virus_tree, host_tree, collection, virus_clade="all", host_clade="all", min_samples=100)
+save_set(samples, os.getcwd())
 
 # Todo Caution, use kfold for training.

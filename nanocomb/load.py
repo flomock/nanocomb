@@ -83,7 +83,9 @@ def files_to_json(path, format = "embl"):
             suffix = '.txt'
 
         with open(path + "nanocomb.json", 'w+') as outjson:
-            for f in file.glob('*'+suffix):
+            # i = 0
+            l1 = 1198
+            for i, f in enumerate(file.glob('*'+suffix)):
                 with open(f, "r") as f:
                     records = SeqIO.parse(f, format=format)
                     for record in records:
@@ -94,8 +96,8 @@ def files_to_json(path, format = "embl"):
                             host = record.features[0].qualifiers['host'][0]
 
                         except:
-                            print(record)
-                            print()
+                            # print(record)
+                            # print()
                             continue
 
                         output.update({'host': host})
@@ -103,6 +105,9 @@ def files_to_json(path, format = "embl"):
 
                         outjson.write(json.dumps(output) + '\n')
                         outputs.append(json.dumps(output))
+
+                print(f"\t===== {i+1} / {l1} -- {int((i+1) / l1 * 100)}% =====")
+                i += 1
         return outputs
 
     else:
