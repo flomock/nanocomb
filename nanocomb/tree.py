@@ -132,42 +132,44 @@ def add_all_leaves_virus(file, collection,include_inner_nodes = False):
     :param collection: the db entries, use _ids as new leafs
     :return: dict with _ids as leafs
     """
-    species_list = []
+    # species_list = []
     for k in iter(list(file)):
 
         if len(list(file[k])) > 0 and not include_inner_nodes:
             add_all_leaves_virus(file[k], collection)
         else:
-            if len(list(file[k])):
+            if len(list(file[k])) > 0:
                 add_all_leaves_virus(file[k], collection)
 
             species = k
             ids = []
 
-            # for element in collection.find({"parent": species}, {"_id": 1}):
-            # for element in collection.find({"parent": {'$in': [re.compile(species)]}}, {"_id": 1}):
+            # print(species)
 
-
-            sub = species.split(" ")
-            species_list.append(sub[0]+" "+sub[1])
+            # sub = species.split(" ")
+            # try:
+            #     species_list.append(sub[0]+" "+sub[1])
+            # except:
+            #     species_list.append(sub[0])
+            for element in collection.find({"parent": species}, {"_id": 1}):
             # for element in collection.find({"parent": re.compile(sub[0]+" "+sub[1])}, {"_id": 1}):
-            #     ids.append(element['_id'])
-            # if len(ids) > 0:
-            #
-            #     tree = file[species]
-            #     for id in ids:
-            #         tree[id]
+            # for element in collection.find({"parent": {'$in': [re.compile(species)]}}, {"_id": 1}):
+                ids.append(element['_id'])
+            if len(ids) > 0:
+                tree = file[species]
+                for id in ids:
+                    tree[id]
                 # Uncomment if list wanted
                 # file.update({species:ids})
-
-    for species in set(species_list):
-        for element in collection.find({"parent": re.compile(species)}, {"_id": 1}):
-            ids.append(element['_id'])
-        if len(ids) > 0:
-
-            tree = file[species]
-            for id in ids:
-                tree[id]
+    # return
+    # for species in set(species_list):
+    #     for element in collection.find({"parent": re.compile(species)}, {"_id": 1}):
+    #         ids.append(element['_id'])
+    #     if len(ids) > 0:
+    #
+    #         tree = file[species]
+    #         for id in ids:
+    #             tree[id]
 
     return
 
@@ -232,7 +234,7 @@ def get_db(mongoclient="localhost:27017", db_name="testDB", collection_name="tes
     return collection
 
 
-def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all", min_samples=100):
+def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all", min_samples=100, del_Clade=[]):
     """
     get samples which fulfill the clade conditions
     :param virus_file: dict tree for viruses
@@ -282,7 +284,9 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         virus_leaves = get_leaves(virus_file)
     else:
         virus_leaves = get_ids(virus_file, virus_clade)
-
+    # print(len(virus_leaves))
+    print(len(set(virus_leaves)))
+    # exit()
     if host_clade == "all":
         # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
         host_leaves = get_leaves(host_file)
@@ -291,6 +295,9 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
     assert len(virus_leaves) > 0, "no valid virus clade"
     assert len(host_leaves) > 0, "no valid host clade"
+    # print(len(host_leaves))
+    print(len(set(host_leaves)))
+
 
     def compare_ids(virus, host):
         ids = set(virus).intersection(host)
@@ -311,8 +318,6 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
 
         return df
 
-    ids = compare_ids(virus_leaves, host_leaves)
-    df = get_table_samples(ids)
 
     def get_training_sets(df, min_samples):
         output_samples = []
@@ -329,6 +334,46 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
 
         return output_df
 
+    def remove_clade(tree,filter):
+        """
+        remove clade from tree entries and return all clade entries for test-set use
+        :param tree: tree containing clade
+        :param filter: which clade to "delete"
+        :return:
+        """
+
+        clade_leaves = get_ids(tree,filter)
+        clade_ids = compare_ids(clade_leaves, host_leaves)
+        df = get_table_samples(clade_ids)
+        # samples = get_training_sets(df, 1)
+        random_order_df = df.sample(frac=1)
+        X_test = random_order_df.seq
+        Y_test = random_order_df.host
+
+        ids = compare_ids(virus_leaves, host_leaves)
+        # del test set entries from training set
+        ids = set(ids).symmetric_difference(clade_ids)
+        df = get_table_samples(ids)
+        samples = get_training_sets(df, min_samples)
+        random_order_df = samples.sample(frac=1)
+        X_train = random_order_df.seq
+        Y_train = random_order_df.host
+
+        dir = os.getcwd()
+        X_train.to_csv(dir + '/X_train.csv', sep='\t', encoding='utf-8')
+        X_test.to_csv(dir + '/X_test.csv', sep='\t', encoding='utf-8')
+        Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
+        Y_test.to_csv(dir + '/Y_test.csv', sep='\t', encoding='utf-8')
+        exit()
+
+    if len(del_Clade) > 0:
+        remove_clade(virus_file,del_Clade)
+
+    ids = compare_ids(virus_leaves, host_leaves)
+    print(len(ids))
+    df = get_table_samples(ids)
+
+
     return get_training_sets(df, min_samples)
 
 
@@ -339,7 +384,11 @@ def save_set(samples, dir):
     :param dir: where to save output
     :return: saves csv files for training and test
     """
-    X_train, X_test, Y_train, Y_test = train_test_split(samples.seq, samples.host, test_size=0.2, random_state=0)
+    X_train, X_test, Y_train, Y_test = train_test_split(samples.seq, samples.host, test_size=0.2, random_state=0,stratify=samples.host)
+    # try:
+    #     print(Y_test[1].unique())
+    # except:
+    #     print(Y_test.host.unique())
     X_train.to_csv(dir + '/X_train.csv', sep='\t', encoding='utf-8')
     X_test.to_csv(dir + '/X_test.csv', sep='\t', encoding='utf-8')
     Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
@@ -363,13 +412,16 @@ def get_host_tree(collection, path_ncbi_files= os.getcwd() + "/examples", path_o
         output = json.dumps(host_tree)
         outjson.write(output)
 
-collection = get_db(db_name="FinalDB", collection_name="allData")
-virus_tree = get_virus_tree(collection)
-exit()
-# virus_tree = json.load(open(os.getcwd() + "/examples/" + "virus_tree.json"))
-host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree.json"))
 
-samples = get_samples(virus_tree, host_tree, collection, virus_clade="all", host_clade="all", min_samples=100)
+
+collection = get_db(db_name="FinalDB", collection_name="allData")
+# virus_tree = get_virus_tree(collection)
+# exit()
+virus_tree = json.load(open(os.getcwd() + "/examples/" + "virus_tree.json"))
+host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree.json"))
+# exit()
+# ebola= 1570291
+# marburgvirus = 11269
+samples = get_samples(virus_tree, host_tree, collection, virus_clade="all", host_clade="all", min_samples=100, del_Clade="Ebolavirus")
 save_set(samples, os.getcwd())
 
-# Todo Caution, use kfold for training.
