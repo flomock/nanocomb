@@ -10,6 +10,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import json
 import re
+from math import gcd
 
 def new_tree(): return defaultdict(new_tree)
 
@@ -21,6 +22,7 @@ def tree_add(t, path):
 
 def pprint_tree(tree_instance):
     def dicts(t): return {k: dicts(t[k]) for k in t}
+
 
 def tree_to_newick(root):
     items = []
@@ -123,7 +125,7 @@ def ncbi_tax2dict(data_dir):
     return dict_tree, scientific_names, common_names
 
 
-def add_all_leaves_virus(file, collection,include_inner_nodes = False):
+def add_all_leaves_virus(file, collection, include_inner_nodes=False):
     """
     1. go through tree leaves as potential parent parameter
     2. search for parent db and add _id as leaf
@@ -152,8 +154,8 @@ def add_all_leaves_virus(file, collection,include_inner_nodes = False):
             # except:
             #     species_list.append(sub[0])
             for element in collection.find({"parent": species}, {"_id": 1}):
-            # for element in collection.find({"parent": re.compile(sub[0]+" "+sub[1])}, {"_id": 1}):
-            # for element in collection.find({"parent": {'$in': [re.compile(species)]}}, {"_id": 1}):
+                # for element in collection.find({"parent": re.compile(sub[0]+" "+sub[1])}, {"_id": 1}):
+                # for element in collection.find({"parent": {'$in': [re.compile(species)]}}, {"_id": 1}):
                 ids.append(element['_id'])
             if len(ids) > 0:
                 tree = file[species]
@@ -174,7 +176,7 @@ def add_all_leaves_virus(file, collection,include_inner_nodes = False):
     return
 
 
-def add_all_leafs_host(file, collection, scien_dict, common_dict, include_inner_nodes = True):
+def add_all_leafs_host(file, collection, scien_dict, common_dict, include_inner_nodes=True):
     """
     1. go through tree leaves as potential parent parameter
     2. search for parent db and add _id as leaf
@@ -214,7 +216,6 @@ def add_all_leafs_host(file, collection, scien_dict, common_dict, include_inner_
                 # Uncomment if list wanted
                 # file.update({species:ids})
 
-
     return
 
 
@@ -234,7 +235,7 @@ def get_db(mongoclient="localhost:27017", db_name="testDB", collection_name="tes
     return collection
 
 
-def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all", min_samples=100, del_Clade=[]):
+def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all", min_samples=100, del_Clade=[], repeats=False):
     """
     get samples which fulfill the clade conditions
     :param virus_file: dict tree for viruses
@@ -279,6 +280,7 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
                     if len(found) > 0:
                         return found
         return []
+
     print("getting samples")
     if virus_clade == "all":
         virus_leaves = get_leaves(virus_file)
@@ -291,13 +293,12 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
         host_leaves = get_leaves(host_file)
     else:
-        host_leaves = get_ids(host_file,host_clade)
+        host_leaves = get_ids(host_file, host_clade)
         # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
     assert len(virus_leaves) > 0, "no valid virus clade"
     assert len(host_leaves) > 0, "no valid host clade"
     # print(len(host_leaves))
     print(len(set(host_leaves)))
-
 
     def compare_ids(virus, host):
         ids = set(virus).intersection(host)
@@ -318,23 +319,30 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
 
         return df
 
-
     def get_training_sets(df, min_samples):
+        """
+
+        :param df:
+        :param min_samples: per host
+        :return:
+        """
         output_samples = []
         output_df = pd.DataFrame()
         for host in df.host.unique():
             df_host = df[df.host == host]
             # print(df_host.host.count())
-            if df_host.host.count() >= min_samples:
-                samples = df_host.sample(n=min_samples)
-                output_samples.append(samples)
+            # if df_host.host.count() >= min_samples:
+            samples = df_host.sample(n=min_samples)
+            output_samples.append(samples)
 
         for i in output_samples:
             output_df = output_df.append(i)
 
         return output_df
 
-    def remove_clade(tree,filter):
+
+
+    def remove_clade(tree, filter):
         """
         remove clade from tree entries and return all clade entries for test-set use
         :param tree: tree containing clade
@@ -342,7 +350,7 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         :return:
         """
 
-        clade_leaves = get_ids(tree,filter)
+        clade_leaves = get_ids(tree, filter)
         clade_ids = compare_ids(clade_leaves, host_leaves)
         df = get_table_samples(clade_ids)
         # samples = get_training_sets(df, 1)
@@ -360,21 +368,24 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         Y_train = random_order_df.host
 
         dir = os.getcwd()
-        X_train.to_csv(dir + '/X_train.csv', sep='\t', encoding='utf-8')
         X_test.to_csv(dir + '/X_test.csv', sep='\t', encoding='utf-8')
-        Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
+        X_train.to_csv(dir + '/X_train.csv', sep='\t', encoding='utf-8')
         Y_test.to_csv(dir + '/Y_test.csv', sep='\t', encoding='utf-8')
+        Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
         exit()
 
     if len(del_Clade) > 0:
-        remove_clade(virus_file,del_Clade)
+        remove_clade(virus_file, del_Clade)
 
     ids = compare_ids(virus_leaves, host_leaves)
     print(len(ids))
     df = get_table_samples(ids)
+    df.to_pickle(os.getcwd()+"/sample_df")
+    if repeats:
+        return get_training_set_with_repeats(df, min_samples)
 
-
-    return get_training_sets(df, min_samples)
+    else:
+        return get_training_sets(df, min_samples)
 
 
 def save_set(samples, dir):
@@ -384,7 +395,8 @@ def save_set(samples, dir):
     :param dir: where to save output
     :return: saves csv files for training and test
     """
-    X_train, X_test, Y_train, Y_test = train_test_split(samples.seq, samples.host, test_size=0.2, random_state=0,stratify=samples.host)
+    X_train, X_test, Y_train, Y_test = train_test_split(samples.seq, samples.host, test_size=0.2, random_state=0,
+                                                        stratify=samples.host)
     # try:
     #     print(Y_test[1].unique())
     # except:
@@ -394,7 +406,9 @@ def save_set(samples, dir):
     Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
     Y_test.to_csv(dir + '/Y_test.csv', sep='\t', encoding='utf-8')
 
-def get_virus_tree(collection, path_csv= os.getcwd() + "/examples/ICTV_Master_Species_List_2016v1.3.csv", path_output_json= os.getcwd() + "/examples/" + "virus_tree.json"):
+
+def get_virus_tree(collection, path_csv=os.getcwd() + "/examples/ICTV_Master_Species_List_2016v1.3.csv",
+                   path_output_json=os.getcwd() + "/examples/" + "virus_tree.json"):
     print("getting virus tree")
     virus_tree = csv2dict(path_csv)
     add_all_leaves_virus(virus_tree, collection)
@@ -403,7 +417,9 @@ def get_virus_tree(collection, path_csv= os.getcwd() + "/examples/ICTV_Master_Sp
         outjson.write(output)
     return virus_tree
 
-def get_host_tree(collection, path_ncbi_files= os.getcwd() + "/examples", path_output_json= os.getcwd() + "/examples/" + "host_tree.json"):
+
+def get_host_tree(collection, path_ncbi_files=os.getcwd() + "/examples",
+                  path_output_json=os.getcwd() + "/examples/" + "host_tree.json"):
     print("getting host tree")
     host_tree, scientific_names, common_names = ncbi_tax2dict(path_ncbi_files)
     print("add leaves to host tree")
@@ -412,7 +428,146 @@ def get_host_tree(collection, path_ncbi_files= os.getcwd() + "/examples", path_o
         output = json.dumps(host_tree)
         outjson.write(output)
 
+    def get_training_sets(df, min_samples):
+        """
 
+        :param df:
+        :param min_samples: per host
+        :return:
+        """
+        output_samples = []
+        output_df = pd.DataFrame()
+        for host in df.host.unique():
+            df_host = df[df.host == host]
+            # print(df_host.host.count())
+            # if df_host.host.count() >= min_samples:
+            samples = df_host.sample(n=min_samples)
+            output_samples.append(samples)
+
+        for i in output_samples:
+            output_df = output_df.append(i)
+
+        return output_df
+
+def get_training_set_with_repeats(df, min_samples, test_size=0.2, val_size=0.2):
+    """
+
+    get specific number of samples per host
+    take from every virus which is infecting the host #Samples_needed/#virus-species_in_host
+    if not possible, draw multiple times
+    CAUTION: its not allowed to have an identical sample in training - val -test set
+
+    1. selected host
+    2. calc how many samples needed per virus
+    3. draw samples from each virus
+    4. append samples to sets
+    5. go to new host, till all handled
+    6. save sets
+    :param df: input dataframe, with possible samples
+    :param min_samples: per host
+    :param test_size: size of the test set
+    :param val_size: size of the validation set
+    :return:
+    """
+
+    test = pd.DataFrame()
+    val = pd.DataFrame()
+    train = pd.DataFrame()
+    foo = gcd(int(val_size*100),int(test_size*100))
+    # logical min number samples per virus-host to divide fair
+    logical_max_num_viruses = gcd(foo, int((1-val_size-test_size)*100))
+    logical_min_samples_virus = min_samples // logical_max_num_viruses
+    val_size =val_size*(1/(1-test_size))
+
+    for host in df.host.unique():
+        df_host = df[df.host == host]
+
+        # Note: True == 1, False == 0
+        num_useable_viruses = sum(df_host.parent.value_counts() >= 3)
+
+        # because min 3 samples per virus
+        # need be caution not to take too much samples, if host has lots of viruses
+        if num_useable_viruses > logical_max_num_viruses:
+            num_useable_viruses = logical_max_num_viruses
+
+        if num_useable_viruses == 0:
+            continue
+        min_samples_virus = min_samples // num_useable_viruses
+        num_used_viruses = 0
+
+        for virus in df_host.parent.unique():
+            if num_used_viruses == num_useable_viruses:
+                break
+
+            df_virus = df_host[df_host.parent == virus]
+
+            # if enough samples take #min_sample_virus
+            # split into train, val, test set
+            if df_virus.parent.count() >= min_samples_virus:
+                samples = df_virus.sample(n=min_samples_virus)
+                samples_test = samples.sample(frac=test_size)
+                samples_val = samples.drop(samples_test.index).sample(frac=val_size)
+                samples_train = samples.drop(samples_test.index)
+                samples_train = samples_train.drop(samples_val.index)
+
+                test = test.append(samples_test)
+                val = val.append(samples_val)
+                train = train.append(samples_train)
+
+                num_used_viruses += 1
+
+            # if not enough samples take all available
+            # than take repeatably more samples till #min_samples_virus is reached
+            elif df_virus.parent.count() < min_samples_virus and df_virus.parent.count() >= 3:
+                n = int(len(df_virus)*test_size)
+                samples_test = df_virus.sample(n=n) #frac=test_size)
+                if n == 0:
+                    samples_test = df_virus.sample(n=1)
+                n = int(len(df_virus.drop(samples_test.index))*val_size)
+                samples_val = df_virus.drop(samples_test.index).sample(n=n) #frac=val_size)
+                if n == 0:
+                    samples_val = df_virus.drop(samples_test.index).sample(n=1)
+
+                # have to remove the test and val samples to get training set
+                samples_train = df_virus.drop(samples_test.index)
+                samples_train = samples_train.drop(samples_val.index).sample(frac=1)
+
+                num_samples_test = int(min_samples_virus * test_size)
+                num_samples_val = int(min_samples_virus * (1 - test_size) * val_size)
+                num_samples_train = min_samples_virus - num_samples_test - num_samples_val
+                samples_test = samples_test.append(samples_test.sample(n=num_samples_test - len(samples_test), replace=True))
+                samples_val = samples_val.append(samples_val.sample(n=num_samples_val - len(samples_val), replace=True))
+                samples_train = samples_train.append(samples_train.sample(n=num_samples_train - len(samples_train), replace=True))
+
+                test = test.append(samples_test)
+                val = val.append(samples_val)
+                train = train.append(samples_train)
+
+                num_used_viruses += 1
+
+            else:
+                continue
+
+    def save_3_sets():
+        X_test = test.seq
+        Y_test = test.host
+        X_val = val.seq
+        Y_val = val.host
+        X_train = train.seq
+        Y_train = train.host
+
+        dir = os.getcwd()
+
+        X_test.to_csv(dir + '/X_test.csv', sep='\t', encoding='utf-8')
+        X_val.to_csv(dir + '/X_val.csv', sep='\t', encoding='utf-8')
+        X_train.to_csv(dir + '/X_train.csv', sep='\t', encoding='utf-8')
+
+        Y_test.to_csv(dir + '/Y_test.csv', sep='\t', encoding='utf-8')
+        Y_val.to_csv(dir + '/Y_val.csv', sep='\t', encoding='utf-8')
+        Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
+
+    save_3_sets()
+    exit()
 
 collection = get_db(db_name="FinalDB", collection_name="allData")
 # virus_tree = get_virus_tree(collection)
@@ -422,6 +577,7 @@ host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree.json"))
 # exit()
 # ebola= 1570291
 # marburgvirus = 11269
-samples = get_samples(virus_tree, host_tree, collection, virus_clade="all", host_clade="all", min_samples=100, del_Clade="Ebolavirus")
+df = pd.read_pickle(os.getcwd()+"/sample_df")
+get_training_set_with_repeats(df,min_samples=100)
+samples = get_samples(virus_tree, host_tree, collection, virus_clade="all", host_clade="all", min_samples=100, repeats=True)
 save_set(samples, os.getcwd())
-
