@@ -12,6 +12,7 @@ import json
 import re
 from math import gcd
 
+
 def new_tree(): return defaultdict(new_tree)
 
 
@@ -87,15 +88,18 @@ def ncbi_tax2dict(data_dir):
 
     print('Reading taxonomy...')
     nodes = new_tree()
+    phylo_names = {}
+
     with open(os.path.join(data_dir, 'nodes.dmp')) as nodes_file:
         for line in nodes_file:
             line = line.rstrip(row_delimiter)
             values = line.split(col_delimiter)
-            tax_id, parent_id = values[:2]
+            tax_id, parent_id, phylo_rank = values[:3]
             tax_id = int(tax_id)
             parent_id = int(parent_id)
-            # this_node = Newick.Clade(name=scientific_names[tax_id])
             this_node = nodes[parent_id]
+            phylo_names.update({tax_id: str(phylo_rank)})
+
             if len(this_node) == 0:
                 nodes.update({parent_id: [tax_id]})
             else:
@@ -122,7 +126,7 @@ def ncbi_tax2dict(data_dir):
         return dict_tree
 
     dict_tree = prepare_dict(nodes)
-    return dict_tree, scientific_names, common_names
+    return dict_tree, scientific_names, common_names, phylo_names
 
 
 def add_all_leaves_virus(file, collection, include_inner_nodes=False):
@@ -176,7 +180,43 @@ def add_all_leaves_virus(file, collection, include_inner_nodes=False):
     return
 
 
-def add_all_leafs_host(file, collection, scien_dict, common_dict, include_inner_nodes=True):
+def pre_host_leafs(collection, scien_dict, common_dict):
+    from multiprocessing.dummy import Pool as ThreadPool
+    pool = ThreadPool(7)
+    # pool.
+    id_dict = {}
+    id_tuple_arr = []
+
+    def get_entries(item):
+        ids = []
+        key, value = item[0], item[1]
+        try:
+            for element in collection.find({"host": {'$in': [re.compile(value)]}}, {"_id": 1}):
+                ids.append(element['_id'])
+        except:
+            print(value)
+            ids = []
+        try:
+            value_common = common_dict[key]
+        except:
+            value_common = -1
+        if value_common != -1:
+            for element in collection.find({"host": {'$in': [re.compile(value_common)]}}, {"_id": 1}):
+                ids.append(element['_id'])
+
+        return (key, ids)
+
+    # for item in scien_dict.items():
+    #     id_tuple_arr.append(get_entries(item))
+    # items = [scien_dict.items()]
+    list_key_value = [[k, v] for k, v in scien_dict.items()]
+    id_tuple_arr = pool.map(get_entries, list_key_value)
+    for i in id_tuple_arr:
+        id_dict.update({i[0]: i[1]})
+    return id_dict
+
+
+def add_all_leafs_host(file, id_dict, include_inner_nodes=True):
     """
     1. go through tree leaves as potential parent parameter
     2. search for parent db and add _id as leaf
@@ -188,26 +228,34 @@ def add_all_leafs_host(file, collection, scien_dict, common_dict, include_inner_
     for k in iter(list(file)):
 
         if len(list(file[k])) > 0 and not include_inner_nodes:
-            add_all_leafs_host(file[k], collection, scien_dict, common_dict)
+            add_all_leafs_host(file[k], id_dict)
 
         else:
             if len(list(file[k])) > 0:
-                add_all_leafs_host(file[k], collection, scien_dict, common_dict)
+                add_all_leafs_host(file[k], id_dict)
 
-            species_s = scien_dict[k]
+            # species_s = scien_dict[k]
+            # try:
+            #     species_c = common_dict[k]
+            # except:
+            #     species_c = -1
+            #     pass
+            # ids = []
+
+            # for element in collection.find({"host": {'$in': [re.compile(species_s)]}}, {"_id": 1}):
+            # # for element in collection.find({"host": species_s}, {"_id": 1}):
+            # # for element in collection.find({"parent": {'$in': [re.compile(species)]}}, {"_id": 1}):
+            #     ids.append(element['_id'])
+            #
+            # if species_c != -1:
+            #     for element in collection.find({"host": {'$in': [re.compile(species_c)]}}, {"_id": 1}):
+            #     # for element in collection.find({"host": species_c}, {"_id": 1}):
+            #         ids.append(element['_id'])
             try:
-                species_c = common_dict[k]
+                ids = id_dict[k]
             except:
-                species_c = -1
-                pass
-            ids = []
-
-            for element in collection.find({"host": species_s}, {"_id": 1}):
-                ids.append(element['_id'])
-
-            if species_c != -1:
-                for element in collection.find({"host": species_c}, {"_id": 1}):
-                    ids.append(element['_id'])
+                print("missing entry" + str(k))
+                ids = []
 
             if len(ids) > 0:
                 tree = file[k]
@@ -235,7 +283,9 @@ def get_db(mongoclient="localhost:27017", db_name="testDB", collection_name="tes
     return collection
 
 
-def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all", min_samples=100, del_Clade=[], repeats=False):
+def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade="all", min_samples=100,
+                del_Clade=[],
+                repeats=False):
     """
     get samples which fulfill the clade conditions
     :param virus_file: dict tree for viruses
@@ -247,7 +297,7 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
     """
 
     # zugriff auf daten durch angabe von Host und Clade
-    def get_leaves(file):
+    def get_leaves(file, parent=""):
         """
         go to leafs of tree and put together in array
         :param file: dict tree representation
@@ -257,9 +307,9 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         for k in iter(list(file)):
 
             if len(list(file[k])) > 0:
-                leaf = np.append(leaf, get_leaves(file[k]))
+                leaf = np.append(leaf, get_leaves(file[k], k))
             else:
-                leaf = np.append(leaf, k)
+                leaf = np.append(leaf, [k, parent])
 
         return leaf
 
@@ -281,45 +331,72 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
                         return found
         return []
 
+    def filter_out_non_species_samples(leaves):
+        host_tree, scientific_names, common_names, phylo_names = ncbi_tax2dict(os.getcwd() + "/examples")
+        filtered = []
+        for i in leaves:
+            parent = i[1]
+            taxon = phylo_names[int(parent)]
+            if taxon == 'species':
+                filtered.append(i)
+        return np.array(filtered)
+
     print("getting samples")
     if virus_clade == "all":
         virus_leaves = get_leaves(virus_file)
     else:
         virus_leaves = get_ids(virus_file, virus_clade)
-    # print(len(virus_leaves))
-    print(len(set(virus_leaves)))
-    # exit()
+
+    # make shape [[id,parent],[id,parent]...]
+    virus_leaves = virus_leaves.reshape((virus_leaves.shape[0] // 2, 2))
+    print(len(set(virus_leaves[:, 0])))
+    # virus_leaves = filter_out_non_species_samples(virus_leaves)
+    # print(len(set(virus_leaves[:,0])))
+
     if host_clade == "all":
-        # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
         host_leaves = get_leaves(host_file)
     else:
         host_leaves = get_ids(host_file, host_clade)
-        # host_leaves = np.array(["ae02c884-187c-492a-a1be-880df33c3f51", "71057421-e62a-4633-b3ba-f2348f77c4bc"])
+    host_leaves = host_leaves.reshape((host_leaves.shape[0] // 2, 2))
+
+    print(len(set(host_leaves[:, 0])))
+    host_leaves = filter_out_non_species_samples(host_leaves)
+    print(len(set(host_leaves[:, 0])))
+
     assert len(virus_leaves) > 0, "no valid virus clade"
     assert len(host_leaves) > 0, "no valid host clade"
-    # print(len(host_leaves))
-    print(len(set(host_leaves)))
 
     def compare_ids(virus, host):
-        ids = set(virus).intersection(host)
-        return ids
+        ids = set(virus[:, 0]).intersection(host[:, 0])
+        virus_sub = [i for i in virus if i[0] in ids]
+        host_sub = [i for i in host if i[0] in ids]
+        virus_sub_dict = {i[0]: i[1] for i in virus_sub}
+        host_sub_dict = {i[0]: i[1] for i in host_sub}
 
-    def get_table_samples(ids):
+        return ids, virus_sub_dict, host_sub_dict
+
+    def get_table_samples(ids, virus_sub, host_sub):
         """
         parse ids to usable sample table
         :param ids: ids of interest
         :return: pandas dataframe with id, host, seq and parent of samples
         """
         l = []
+        # for index in range(len(ids)):
+        #     id = ids[index]
+
         for id in ids:
             for element in collection.find({"_id": id}):
                 l.append(element)
-        gen = ((i['_id'], i['host'], i['seq'], i['parent']) for i in l)
+        # gen = ((i['_id'], i['host'], i['seq'], i['parent']) for i in l)
+
+        # speichere den parent im Baum als Host bzw Virus, nicht den eintrag in der DB
+        gen = ((i['_id'], host_sub[i['_id']], i['seq'], virus_sub[i['_id']]) for i in l)
         df = pd.DataFrame.from_records(gen, columns=['id', 'host', 'seq', 'parent'])
 
         return df
 
-    def get_training_sets(df, min_samples):
+    def get_training_sets(df, rank, min_samples):
         """
 
         :param df:
@@ -328,19 +405,17 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         """
         output_samples = []
         output_df = pd.DataFrame()
-        for host in df.host.unique():
-            df_host = df[df.host == host]
+        for host in df[rank].unique():
+            df_host = df[df[rank] == host]
             # print(df_host.host.count())
-            # if df_host.host.count() >= min_samples:
-            samples = df_host.sample(n=min_samples)
-            output_samples.append(samples)
+            if df_host.host.count() >= min_samples:
+                samples = df_host.sample(n=min_samples)
+                output_samples.append(samples)
 
         for i in output_samples:
             output_df = output_df.append(i)
 
         return output_df
-
-
 
     def remove_clade(tree, filter):
         """
@@ -374,37 +449,91 @@ def get_samples(virus_file, host_file, collection, host_clade="all", virus_clade
         Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
         exit()
 
+    def add_host_taxonomy(df):
+        """
+        1. get dataframe
+        2. make new columns (genus,family etc)
+        3. add for every id taxonomy
+        4. return bigger df
+        :param df:
+        :return:
+        """
+        host_tree, scientific_names, common_names, phylo_names = ncbi_tax2dict(os.getcwd() + "/examples")
+        # inv_map_scien = {v: k for k, v in scientific_names.items()}
+        # inv_map_com = {v: k for k, v in common_names.items()}
+        host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree_big.json"))
+
+        columns = set(phylo_names.values())
+        for col in columns:
+            df[col] = pd.Series(index=df.index)
+
+        for host in df.host.unique():
+            # print(inv_map_scien)
+            # print(inv_map_scien[host])
+            # name = str(scientific_names[int(host)])
+            # print(name)
+            taxonomy = get_tax_path(host, host_tree)
+
+            for taxon in taxonomy:
+                # df[genus]= homo for all entries with host
+                df.loc[df.host == host, phylo_names[int(taxon)]] = scientific_names[int(taxon)]
+
+        return df
+
     if len(del_Clade) > 0:
         remove_clade(virus_file, del_Clade)
 
-    ids = compare_ids(virus_leaves, host_leaves)
+    # speichere lang zu berechnendes object
+    # import pickle
+    # with open(str(os.getcwd())+'/host_leaves.pkl', 'wb') as f:
+    #     pickle.dump(host_leaves, f)
+    #
+    # with open(str(os.getcwd())+'/virus_leaves.pkl', 'wb') as f:
+    #     pickle.dump(virus_leaves, f)
+
+    # f = open(os.getcwd() + '/host_leaves.pkl', 'rb')
+    # host_leaves = pickle.load(f)
+    # f = open(os.getcwd() + '/virus_leaves.pkl', 'rb')
+    # virus_leaves = pickle.load(f)
+    #
+    ids, virus_sub, host_sub = compare_ids(virus_leaves, host_leaves)
     print(len(ids))
-    df = get_table_samples(ids)
-    df.to_pickle(os.getcwd()+"/sample_df")
+
+    df = get_table_samples(ids, virus_sub, host_sub)
+    df = add_host_taxonomy(df)
+    df.to_csv(os.getcwd() + "/sample_df.csv")
+    df.to_pickle(os.getcwd() + "/sample_df")
+    # df = pd.read_pickle(os.getcwd() + "/sample_df")
+
     if repeats:
-        return get_training_set_with_repeats(df, min_samples)
+        for index, rank in enumerate(["species", "genus", "family", "order", "class", "phylum"]):
+            print(rank)
+            get_training_set_with_repeats(df, rank, min_samples * (index + 1))
 
     else:
-        return get_training_sets(df, min_samples)
+        for index, rank in enumerate(["species", "genus", "family", "order", "class", "phylum"]):
+            samples = get_training_sets(df, rank, min_samples * (index + 1))
+            print(samples)
+            save_set(samples, rank, os.getcwd() + "/100Samples_phylo")
 
 
-def save_set(samples, dir):
+def save_set(samples, rank, dir):
     """
     save samples as train and test set
     :param samples: dataframe with seq and host
     :param dir: where to save output
     :return: saves csv files for training and test
     """
-    X_train, X_test, Y_train, Y_test = train_test_split(samples.seq, samples.host, test_size=0.2, random_state=0,
-                                                        stratify=samples.host)
+    X_train, X_test, Y_train, Y_test = train_test_split(samples.seq, samples[rank], test_size=0.2, random_state=0,
+                                                        stratify=samples[rank])
     # try:
     #     print(Y_test[1].unique())
     # except:
     #     print(Y_test.host.unique())
-    X_train.to_csv(dir + '/X_train.csv', sep='\t', encoding='utf-8')
-    X_test.to_csv(dir + '/X_test.csv', sep='\t', encoding='utf-8')
-    Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
-    Y_test.to_csv(dir + '/Y_test.csv', sep='\t', encoding='utf-8')
+    X_train.to_csv(dir + '/X_train_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
+    X_test.to_csv(dir + '/X_test_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
+    Y_train.to_csv(dir + '/Y_train_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
+    Y_test.to_csv(dir + '/Y_test_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
 
 
 def get_virus_tree(collection, path_csv=os.getcwd() + "/examples/ICTV_Master_Species_List_2016v1.3.csv",
@@ -421,9 +550,10 @@ def get_virus_tree(collection, path_csv=os.getcwd() + "/examples/ICTV_Master_Spe
 def get_host_tree(collection, path_ncbi_files=os.getcwd() + "/examples",
                   path_output_json=os.getcwd() + "/examples/" + "host_tree.json"):
     print("getting host tree")
-    host_tree, scientific_names, common_names = ncbi_tax2dict(path_ncbi_files)
+    host_tree, scientific_names, common_names, phylo_names = ncbi_tax2dict(path_ncbi_files)
     print("add leaves to host tree")
-    add_all_leafs_host(host_tree, collection, scientific_names, common_names)
+    id_dict = pre_host_leafs(collection, scientific_names, common_names)
+    add_all_leafs_host(host_tree, id_dict)
     with open(path_output_json, 'w+') as outjson:
         output = json.dumps(host_tree)
         outjson.write(output)
@@ -449,7 +579,8 @@ def get_host_tree(collection, path_ncbi_files=os.getcwd() + "/examples",
 
         return output_df
 
-def get_training_set_with_repeats(df, min_samples, test_size=0.2, val_size=0.2):
+
+def get_training_set_with_repeats(df, rank, min_samples, test_size=0.2, val_size=0.2):
     """
 
     get specific number of samples per host
@@ -473,14 +604,14 @@ def get_training_set_with_repeats(df, min_samples, test_size=0.2, val_size=0.2):
     test = pd.DataFrame()
     val = pd.DataFrame()
     train = pd.DataFrame()
-    foo = gcd(int(val_size*100),int(test_size*100))
+    foo = gcd(int(val_size * 100), int(test_size * 100))
     # logical min number samples per virus-host to divide fair
-    logical_max_num_viruses = gcd(foo, int((1-val_size-test_size)*100))
+    logical_max_num_viruses = gcd(foo, int((1 - val_size - test_size) * 100))
     logical_min_samples_virus = min_samples // logical_max_num_viruses
-    val_size =val_size*(1/(1-test_size))
+    val_size = val_size * (1 / (1 - test_size))
 
-    for host in df.host.unique():
-        df_host = df[df.host == host]
+    for host in df[rank].unique():
+        df_host = df[df[rank] == host]
 
         # Note: True == 1, False == 0
         num_useable_viruses = sum(df_host.parent.value_counts() >= 3)
@@ -519,12 +650,12 @@ def get_training_set_with_repeats(df, min_samples, test_size=0.2, val_size=0.2):
             # if not enough samples take all available
             # than take repeatably more samples till #min_samples_virus is reached
             elif df_virus.parent.count() < min_samples_virus and df_virus.parent.count() >= 3:
-                n = int(len(df_virus)*test_size)
-                samples_test = df_virus.sample(n=n) #frac=test_size)
+                n = int(len(df_virus) * test_size)
+                samples_test = df_virus.sample(n=n)  # frac=test_size)
                 if n == 0:
                     samples_test = df_virus.sample(n=1)
-                n = int(len(df_virus.drop(samples_test.index))*val_size)
-                samples_val = df_virus.drop(samples_test.index).sample(n=n) #frac=val_size)
+                n = int(len(df_virus.drop(samples_test.index)) * val_size)
+                samples_val = df_virus.drop(samples_test.index).sample(n=n)  # frac=val_size)
                 if n == 0:
                     samples_val = df_virus.drop(samples_test.index).sample(n=1)
 
@@ -535,9 +666,11 @@ def get_training_set_with_repeats(df, min_samples, test_size=0.2, val_size=0.2):
                 num_samples_test = int(min_samples_virus * test_size)
                 num_samples_val = int(min_samples_virus * (1 - test_size) * val_size)
                 num_samples_train = min_samples_virus - num_samples_test - num_samples_val
-                samples_test = samples_test.append(samples_test.sample(n=num_samples_test - len(samples_test), replace=True))
+                samples_test = samples_test.append(
+                    samples_test.sample(n=num_samples_test - len(samples_test), replace=True))
                 samples_val = samples_val.append(samples_val.sample(n=num_samples_val - len(samples_val), replace=True))
-                samples_train = samples_train.append(samples_train.sample(n=num_samples_train - len(samples_train), replace=True))
+                samples_train = samples_train.append(
+                    samples_train.sample(n=num_samples_train - len(samples_train), replace=True))
 
                 test = test.append(samples_test)
                 val = val.append(samples_val)
@@ -548,36 +681,137 @@ def get_training_set_with_repeats(df, min_samples, test_size=0.2, val_size=0.2):
             else:
                 continue
 
-    def save_3_sets():
+    def save_3_sets(rank):
         X_test = test.seq
-        Y_test = test.host
+        Y_test = test[rank]
         X_val = val.seq
-        Y_val = val.host
+        Y_val = val[rank]
         X_train = train.seq
-        Y_train = train.host
+        Y_train = train[rank]
 
         dir = os.getcwd()
 
-        X_test.to_csv(dir + '/X_test.csv', sep='\t', encoding='utf-8')
-        X_val.to_csv(dir + '/X_val.csv', sep='\t', encoding='utf-8')
-        X_train.to_csv(dir + '/X_train.csv', sep='\t', encoding='utf-8')
+        X_test.to_csv(dir + '/X_test_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
+        X_val.to_csv(dir + '/X_val_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
+        X_train.to_csv(dir + '/X_train_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
 
-        Y_test.to_csv(dir + '/Y_test.csv', sep='\t', encoding='utf-8')
-        Y_val.to_csv(dir + '/Y_val.csv', sep='\t', encoding='utf-8')
-        Y_train.to_csv(dir + '/Y_train.csv', sep='\t', encoding='utf-8')
+        Y_test.to_csv(dir + '/Y_test_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
+        Y_val.to_csv(dir + '/Y_val_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
+        Y_train.to_csv(dir + '/Y_train_' + str(rank) + '.csv', sep='\t', encoding='utf-8')
 
-    save_3_sets()
-    exit()
+    save_3_sets(rank)
+    # exit()
+
+
+def get_tax_path(species, file):
+    for k in iter(file.keys()):
+        if k == species:
+            tax = []
+            tax.insert(0, k)
+            return tax
+        else:
+            if len(file[k].keys()) > 0:
+                found = get_tax_path(species, file[k])
+                if len(found) > 0:
+                    found.insert(0, k)
+                    return found
+    return []
+
+
+def virus_tree_pairs():
+    """
+    1. load all ids
+    2. make df
+    3. count & memories combinations
+    4. change name to taxonomy
+    5. save list
+    """
+
+    # 1 & 2
+    df = pd.read_pickle(os.getcwd() + "/sample_df")
+    foo = df.groupby(['host', 'parent']).count().reset_index()
+    foo = foo[['host', 'parent', 'id']].rename(index=str, columns={"parent": "virus", "id": "number"})
+    # print(foo)
+    dict_tree, scientific_names, common_names, phylo_names = ncbi_tax2dict(os.getcwd() + "/examples")
+    inv_map_scien = {v: k for k, v in scientific_names.items()}
+    inv_map_com = {v: k for k, v in common_names.items()}
+
+    # i = 0
+    virus_tree = json.load(open(os.getcwd() + "/examples/" + "virus_tree.json"))
+
+    print("parse viruses")
+
+    for virus in foo.virus.unique():
+        taxonomy = get_tax_path(virus, virus_tree)
+        phyl = ""
+        for taxon in taxonomy:
+            phyl = phyl + "/" + str(taxon).replace(' ', '_')
+        foo.virus[foo.virus == virus] = phyl
+
+        # print(phyl)
+
+    print(foo)
+
+    print("parse hosts")
+
+    host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree.json"))
+    for host in foo.host.unique():
+        try:
+            name = str(inv_map_scien[host])
+        except:
+            name = str(inv_map_com[host])
+        taxonomy = get_tax_path(name, host_tree)
+        phyl = ""
+        for taxon in taxonomy:
+            phyl = phyl + "/" + scientific_names[int(taxon)].replace(' ', '_')
+
+        foo.host[foo.host == host] = phyl
+
+    print(foo)
+    foo.to_csv(os.getcwd() + '/host_virus_pairs.csv', sep='\t', encoding='utf-8')
+
+
+def pca_prep():
+    df = pd.read_pickle(os.getcwd() + "/sample_df")
+    X_test = df.seq
+    Y_test = df.host
+
+    dict_tree, scientific_names, common_names, phylo_names = ncbi_tax2dict(os.getcwd() + "/examples")
+    inv_map_scien = {v: k for k, v in scientific_names.items()}
+    inv_map_com = {v: k for k, v in common_names.items()}
+    host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree.json"))
+
+    for host in df.host.unique():
+        # try:
+        #     name = str(inv_map_scien[host])
+        # except:
+        #     name = str(inv_map_com[host])
+        taxonomy = get_tax_path(host, host_tree)
+        phyl = ""
+        for taxon in taxonomy:
+            phyl = phyl + "/" + scientific_names[int(taxon)].replace(' ', '_')
+
+        Y_test[Y_test == host] = phyl
+
+    X_test.to_csv(os.getcwd() + '/PCA_X_test.csv', sep='\t', encoding='utf-8')
+    Y_test.to_csv(os.getcwd() + '/PCA_Y_test.csv', sep='\t', encoding='utf-8')
+
 
 collection = get_db(db_name="FinalDB", collection_name="allData")
-# virus_tree = get_virus_tree(collection)
-# exit()
-virus_tree = json.load(open(os.getcwd() + "/examples/" + "virus_tree.json"))
-host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree.json"))
-# exit()
-# ebola= 1570291
-# marburgvirus = 11269
-df = pd.read_pickle(os.getcwd()+"/sample_df")
-get_training_set_with_repeats(df,min_samples=100)
-samples = get_samples(virus_tree, host_tree, collection, virus_clade="all", host_clade="all", min_samples=100, repeats=True)
-save_set(samples, os.getcwd())
+# host_tree = get_host_tree(collection,path_output_json="/home/go96bix/projects/nanocomb/nanocomb/examples/host_tree_big.json")
+# # virus_tree = get_virus_tree(collection)
+# # exit()
+# virus_tree = json.load(open(os.getcwd() + "/examples/" + "virus_tree.json"))
+virus_tree = json.load(open(os.getcwd() + "/examples/" + "virus_tree_big.json"))
+# host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree.json"))
+host_tree = json.load(open(os.getcwd() + "/examples/" + "host_tree_big.json"))
+# # exit()
+# # ebola= 1570291
+# # marburgvirus = 11269
+# df = pd.read_pickle(os.getcwd()+"/sample_df")
+# get_training_set_with_repeats(df,min_samples=100)
+samples = get_samples(virus_tree, host_tree, collection, virus_clade="all", host_clade="all", min_samples=100,
+                      repeats=False)
+# save_set(samples, os.getcwd())
+# virus_tree_pairs()
+# pca_prep()
